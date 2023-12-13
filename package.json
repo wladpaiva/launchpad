@@ -6,6 +6,7 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{js,jsx,json,yml,yaml,css,ts,tsx,md,mdx}\"",
+    "typecheck": "turbo typecheck",
     "prepare": "husky install"
   },
   "devDependencies": {
