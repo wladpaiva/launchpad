@@ -1,14 +1,16 @@
-# Turborepo starter
+# ⛴️ Turboship starter
 
-This is an official starter Turborepo.
+This is an official starter Turboship.
 
-## Using this example
+## Getting Started
 
-Run the following command:
+To run this project you need to have [Bun.sh](https://bun.sh) installed. Then you can run the following command to setup the project:
 
-```sh
-npx create-turbo@latest
+```bash
+bun dev
 ```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## What's inside?
 
@@ -38,7 +40,7 @@ To build all apps and packages, run the following command:
 
 ```
 cd my-turborepo
-pnpm build
+bun build
 ```
 
 ### Develop
@@ -47,7 +49,7 @@ To develop all apps and packages, run the following command:
 
 ```
 cd my-turborepo
-pnpm dev
+bun dev
 ```
 
 ### Remote Caching
