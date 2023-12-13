@@ -7,12 +7,21 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --max-warnings 0",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev --name \"$(date +%s)\"",
+    "db:studio": "prisma studio",
+    "db:seed": "prisma db seed",
+    "db:push": "prisma db push",
+    "db:reset": "prisma migrate reset --force"
   },
   "dependencies": {
+    "@epic-web/remember": "^1.0.2",
+    "@prisma/client": "^5.7.0",
     "@repo/ui": "*",
     "next": "^14.0.4",
     "next-themes": "^0.2.1",
+    "prisma": "^5.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -30,5 +39,8 @@
     "postcss": "^8.4.32",
     "tailwindcss": "^3.3.6",
     "typescript": "^5.3.3"
+  },
+  "prisma": {
+    "seed": "bun prisma/seed.ts"
   }
 }
