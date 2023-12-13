@@ -4,6 +4,10 @@
   "private": true,
   "exports": {
     "./button": "./components/ui/button.tsx",
+    "./label": "./components/ui/label.tsx",
+    "./input": "./components/ui/input.tsx",
+    "./icons": "./components/icons.tsx",
+    "./forms": "./components/forms.tsx",
     "./utils": "./lib/utils.ts"
   },
   "scripts": {
@@ -25,11 +29,15 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "lucide-react": "^0.294.0",
     "tailwind-merge": "^2.1.0",
     "tailwindcss-animate": "^1.0.7"
+  },
+  "peerDependencies": {
+    "react-dom": "^18.2.0"
   }
 }
