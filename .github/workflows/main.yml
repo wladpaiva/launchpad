@@ -16,8 +16,8 @@ concurrency:
 #   TURBO_TEAM: ${{ vars.TURBO_TEAM }}
 
 jobs:
-  static-test:
-    name: 🔬 Static tests
+  tests:
+    name: 🔬 Tests
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Checkout repo
@@ -31,11 +31,14 @@ jobs:
       - name: 📦 Install dependencies
         run: bun install
 
-      - name: ⬣ ESLint
+      - name: ⬣ Lint
         run: bun lint
 
-      - name: ʦ TypeScript
+      - name: ʦ Type check
         run: bun typecheck
 
       - name: 🏃‍♂️ Build
         run: bun run build
+
+      - name: 🚦 Unit test
+        run: bun run test
