@@ -15,6 +15,11 @@
     },
     "typecheck": {
       "dependsOn": ["^typecheck"]
+    },
+    "test": {},
+    "test:watch": {
+      "cache": false,
+      "persistent": true
     }
   }
 }

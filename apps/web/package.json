@@ -13,7 +13,9 @@
     "db:studio": "prisma studio",
     "db:seed": "prisma db seed",
     "db:push": "prisma db push",
-    "db:reset": "prisma migrate reset --force"
+    "db:reset": "prisma migrate reset --force",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@epic-web/remember": "^1.0.2",
