@@ -15,7 +15,8 @@
     "db:push": "prisma db push",
     "db:reset": "prisma migrate reset --force",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@epic-web/remember": "^1.0.2",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.0.4",
+    "@playwright/test": "^1.40.1",
     "@repo/eslint-config": "*",
     "@repo/tailwind-config": "*",
     "@repo/typescript-config": "*",

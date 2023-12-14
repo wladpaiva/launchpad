@@ -1,5 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["CI"],
   "globalDependencies": ["**/.env.*local"],
   "pipeline": {
     "build": {
@@ -20,6 +21,7 @@
     "test:watch": {
       "cache": false,
       "persistent": true
-    }
+    },
+    "test:e2e": {}
   }
 }
