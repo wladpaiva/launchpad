@@ -1,0 +1,24 @@
+{
+  "name": "@repo/email",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.ts",
+  "files": [
+    "jsx",
+    "index.ts"
+  ],
+  "scripts": {
+    "dev": "email preview ./jsx --no-open",
+    "export": "email build ./jsx"
+  },
+  "dependencies": {
+    "@repo/design-system": "*",
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "inline-css": "^4.0.2",
+    "jsx-email": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/inline-css": "^3.0.3"
+  }
+}

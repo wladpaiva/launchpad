@@ -1,6 +1,14 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalEnv": ["CI"],
+  "globalEnv": [
+    "CI",
+    "VERCEL_URL",
+    "BUSINESS_FANTASY_NAME",
+    "BUSINESS_NAME",
+    "BUSINESS_ADDRESS",
+    "BUSINESS_PHONE",
+    "BUSINESS_EMAIL"
+  ],
   "globalDependencies": ["**/.env.*local"],
   "pipeline": {
     "build": {
