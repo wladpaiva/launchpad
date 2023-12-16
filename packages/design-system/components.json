@@ -4,13 +4,13 @@
   "rsc": true,
   "tsx": true,
   "tailwind": {
-    "config": "../tailwind-config/tailwind.config.js",
-    "css": "../tailwind-config/globals.css",
+    "config": "unocss.config.mts",
+    "css": "reset.css",
     "baseColor": "zinc",
     "cssVariables": true
   },
   "aliases": {
-    "components": "@repo/ui/components",
-    "utils": "@repo/ui/utils"
+    "components": "@repo/design-system/components",
+    "utils": "@repo/design-system/utils"
   }
 }

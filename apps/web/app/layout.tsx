@@ -1,10 +1,10 @@
-import {cn} from '@repo/ui/utils'
+import {cn} from '@repo/design-system/lib/utils'
 import type {Metadata} from 'next'
 import {Inter as FontSans} from 'next/font/google'
 
 import {ThemeProvider} from './components/theme-provider'
 
-import '@repo/tailwind-config/globals.css'
+import '@repo/design-system/reset.css'
 
 export const fontSans = FontSans({
   subsets: ['latin'],

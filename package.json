@@ -25,7 +25,6 @@
     "husky": "^8.0.3",
     "nano-staged": "^0.8.0",
     "prettier": "^3.1.1",
-    "prettier-plugin-tailwindcss": "^0.5.9",
     "turbo": "latest",
     "vite-tsconfig-paths": "^4.2.2",
     "vitest": "^1.0.4",
