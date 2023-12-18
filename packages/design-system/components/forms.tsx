@@ -13,7 +13,13 @@ const SubmitButton = forwardRef<HTMLButtonElement, SubmitButtonProps>(
     const {pending} = useFormStatus()
 
     return (
-      <Button {...rest} type="submit" aria-disabled={pending} ref={ref}>
+      <Button
+        {...rest}
+        disabled={pending}
+        type="submit"
+        aria-disabled={pending}
+        ref={ref}
+      >
         {pending && <Spinner className="mr-2 h-4 w-4 animate-spin" />}
         {children}
       </Button>

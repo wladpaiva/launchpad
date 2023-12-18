@@ -11,6 +11,6 @@
   },
   "aliases": {
     "components": "@repo/design-system/components",
-    "utils": "@repo/design-system/utils"
+    "utils": "@repo/design-system/lib/utils"
   }
 }

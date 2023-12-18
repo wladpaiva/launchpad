@@ -9,7 +9,11 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+
+    // This is required for the next-auth@v5 beta to work. It can be removed once v5 is released.
+    "declaration": false,
+    "declarationMap": false
   },
   "include": [
     "next-env.d.ts",
