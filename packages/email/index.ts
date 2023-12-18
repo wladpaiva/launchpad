@@ -1,6 +1,4 @@
-import {render as renderJSX, renderPlainText} from 'jsx-email'
-
-import inlineCss from 'inline-css'
+import {render as renderHtml, renderPlainText} from 'jsx-email'
 
 /**
  * Render a React component to an to be used in an email
@@ -9,9 +7,13 @@ import inlineCss from 'inline-css'
  * @returns
  */
 export const render = async (component: React.ReactElement) => {
-  const html = await renderJSX(component)
+  const [text, html] = await Promise.all([
+    renderPlainText(component),
+    renderHtml(component),
+  ])
+
   return {
-    text: await renderPlainText(component),
-    html: await inlineCss(html, {url: ''}),
+    text,
+    html,
   }
 }

@@ -1,8 +1,4 @@
-import {
-  BUSINESS_FANTASY_NAME,
-  GOOGLE_CLIENT_ID,
-  GOOGLE_CLIENT_SECRET,
-} from '@/lib/env'
+import {BUSINESS_FANTASY_NAME, enabled} from '@/lib/env'
 import {buttonVariants} from '@repo/design-system/components/ui/button'
 import {cn} from '@repo/design-system/lib/utils'
 import {Metadata} from 'next'
@@ -17,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function AuthenticationPage() {
   const enabledOauthProviders = {
-    google: !!(GOOGLE_CLIENT_ID && GOOGLE_CLIENT_SECRET),
+    google: enabled.google,
   }
 
   return (

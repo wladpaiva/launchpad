@@ -1,11 +1,21 @@
 import {PrismaAdapter} from '@auth/prisma-adapter'
+import {render} from '@repo/email'
+import {Template as MagicLinkTemplate} from '@repo/email/jsx/transactional-magic-link'
 import NextAuth from 'next-auth'
 import Email from 'next-auth/providers/email'
 import Google from 'next-auth/providers/google'
 import {redirect} from 'next/navigation'
 
-import {EMAIL_FROM, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET} from './env'
+import {resend} from './email'
+import {
+  BUSINESS_FANTASY_NAME,
+  FROM_EMAIL,
+  GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET,
+  isDevelopment,
+} from './env'
 import {prisma} from './prisma'
+import {trigger} from './trigger'
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -45,10 +55,28 @@ export const {
   },
   providers: [
     Email({
-      from: EMAIL_FROM,
-      sendVerificationRequest(params) {
-        console.log('👉 login magic link')
-        console.log(`👉 ${params.url}`)
+      async sendVerificationRequest(params) {
+        const rendered = await render(<MagicLinkTemplate link={params.url} />)
+        const payload = {
+          to: params.identifier,
+          from: FROM_EMAIL,
+          subject: `Sign in to ${BUSINESS_FANTASY_NAME}`,
+          ...rendered,
+        }
+
+        if (isDevelopment || !resend) {
+          console.log(`   - Magic link:   ${params.url}`)
+        }
+
+        if (trigger) {
+          await trigger.sendEvent({
+            name: 'send.email',
+            payload,
+          })
+          return
+        }
+
+        resend?.emails.send(payload)
       },
     }),
 
