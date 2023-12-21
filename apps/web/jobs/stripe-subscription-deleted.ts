@@ -11,7 +11,7 @@ if (stripeTrigger) {
       stripe: stripeTrigger,
     },
     trigger: stripeTrigger.onCustomerSubscriptionDeleted(),
-    run: async (payload, io, ctx) => {
+    run: async (payload, io) => {
       // TODO: [Stripe] This is where you know that a customer's subscription ends.
 
       await io.runTask(

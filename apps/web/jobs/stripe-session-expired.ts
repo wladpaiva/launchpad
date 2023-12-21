@@ -10,7 +10,7 @@ if (stripeTrigger) {
       stripe: stripeTrigger,
     },
     trigger: stripeTrigger.onCheckoutSessionExpired(),
-    run: async (payload, io, ctx) => {
+    run: async (payload, io) => {
       // TODO: [Stripe] Occurs when a Checkout Session is expired.
       // Probably you want to send them an email to remind them to pay.
       io.logger.info('Checkout session expired', payload)

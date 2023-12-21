@@ -9,7 +9,6 @@ import {redirect} from 'next/navigation'
 import {resend} from './email'
 import {
   BUSINESS_FANTASY_NAME,
-  enabled,
   FROM_EMAIL,
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,

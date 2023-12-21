@@ -11,7 +11,7 @@ if (stripeTrigger) {
       stripe: stripeTrigger,
     },
     trigger: stripeTrigger.onCustomerSubscriptionCreated(),
-    run: async (payload, io, ctx) => {
+    run: async (payload, io) => {
       // TODO: [Stripe] Occurs whenever a customer is signed up for a new plan.
 
       await io.runTask(

@@ -132,7 +132,7 @@ async function Pricing({couponId}: PrincingProps) {
         reprehenderit in aliquid fugiat dolorum voluptatibus.
       </p>
       <div className="mx-auto mt-16 grid gap-8 max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 lg:max-w-4xl lg:grid-cols-2">
-        {products.map((product, tierIdx) => {
+        {products.map(product => {
           const currency = Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: product.default_price.currency.toUpperCase(),

@@ -11,7 +11,7 @@ if (stripeTrigger) {
       stripe: stripeTrigger,
     },
     trigger: stripeTrigger.onCustomerCreated(),
-    run: async (payload, io, ctx) => {
+    run: async (payload, io) => {
       // TODO: [Stripe] Occurs whenever a new customer is created.
       await io.runTask(
         'link-user-stripe-customer',

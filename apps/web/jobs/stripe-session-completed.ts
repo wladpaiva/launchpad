@@ -12,7 +12,7 @@ if (stripeTrigger) {
       stripe: stripeTrigger,
     },
     trigger: stripeTrigger.onCheckoutSessionCompleted(),
-    run: async (payload, io, ctx) => {
+    run: async (payload, io) => {
       // TODO: [Stripe] Occurs when a Checkout Session has been successfully completed.
       // Tipically you would want to update the database here.
 
