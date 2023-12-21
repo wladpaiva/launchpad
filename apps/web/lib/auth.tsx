@@ -1,7 +1,7 @@
 import {PrismaAdapter} from '@auth/prisma-adapter'
 import {render} from '@repo/email'
 import {Template as MagicLinkTemplate} from '@repo/email/jsx/transactional-magic-link'
-import NextAuth from 'next-auth'
+import NextAuth, {User as DefaultUser} from 'next-auth'
 import Email from 'next-auth/providers/email'
 import Google from 'next-auth/providers/google'
 import {redirect} from 'next/navigation'
@@ -9,12 +9,14 @@ import {redirect} from 'next/navigation'
 import {resend} from './email'
 import {
   BUSINESS_FANTASY_NAME,
+  enabled,
   FROM_EMAIL,
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,
   isDevelopment,
 } from './env'
 import {prisma} from './prisma'
+import {stripe} from './stripe'
 import {trigger} from './trigger'
 
 /**
@@ -24,10 +26,21 @@ import {trigger} from './trigger'
  * @see https://next-auth.js.org/getting-started/typescript#module-augmentation
  */
 declare module 'next-auth' {
-  // interface User {
-  //   // ...other properties
-  //   // role: UserRole;
-  // }
+  // eslint-disable-next-line no-unused-vars
+  interface Session {
+    user: {
+      stripeCustomerId?: string
+      isActive: boolean
+      subscriptionId?: string
+    } & DefaultUser
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  interface User {
+    stripeCustomerId?: string
+    isActive?: boolean
+    subscriptionId?: string
+  }
 }
 
 export const {
@@ -50,6 +63,9 @@ export const {
       user: {
         ...session.user,
         id: user.id,
+        stripeCustomerId: user.stripeCustomerId,
+        isActive: user.isActive,
+        subscriptionId: user.subscriptionId,
       },
     }),
   },
@@ -85,6 +101,22 @@ export const {
       clientSecret: GOOGLE_CLIENT_SECRET,
     }),
   ],
+  events: {
+    /**
+     * Create user in the stripe customer base
+     */
+    async createUser({user}) {
+      if (stripe) {
+        await stripe.customers.create({
+          email: user.email || undefined,
+          name: user.name || undefined,
+          metadata: {
+            userId: user.id,
+          },
+        })
+      }
+    },
+  },
 })
 
 /**

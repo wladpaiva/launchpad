@@ -21,7 +21,7 @@ const schema = z
   )
   .and(
     z.object({
-      redirectTo: z.string().url(),
+      redirectTo: z.string().url().or(z.literal('')),
     }),
   )
 

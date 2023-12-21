@@ -8,6 +8,8 @@ import 'server-only'
 export const isProduction = process.env.NODE_ENV === 'production'
 export const isDevelopment = process.env.NODE_ENV === 'development'
 
+export const BASE_URL = process.env.VERCEL_URL || 'http://localhost:3000'
+
 // Validate and parse environment variables using zod.
 // https://www.npmjs.com/package/znv
 export const {
@@ -22,6 +24,8 @@ export const {
   TRIGGER_API_KEY,
   TRIGGER_API_URL,
   NEXT_PUBLIC_TRIGGER_PUBLIC_API_KEY,
+
+  STRIPE_SECRET_KEY,
 } = parseEnv(process.env, {
   DATABASE_URL: z.string().min(1).url(),
   BUSINESS_FANTASY_NAME: z.string().min(1),
@@ -38,6 +42,8 @@ export const {
   TRIGGER_API_KEY: z.string().optional(),
   TRIGGER_API_URL: z.string().optional(),
   NEXT_PUBLIC_TRIGGER_PUBLIC_API_KEY: z.string().optional(),
+
+  STRIPE_SECRET_KEY: z.string().optional(),
 })
 
 /**
@@ -47,4 +53,5 @@ export const enabled = {
   google: !!GOOGLE_CLIENT_ID && !!GOOGLE_CLIENT_SECRET,
   resend: !!RESEND_API_KEY,
   trigger: !!TRIGGER_API_KEY && !!TRIGGER_API_URL,
+  stripe: !!STRIPE_SECRET_KEY,
 }
