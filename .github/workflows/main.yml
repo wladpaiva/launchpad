@@ -28,8 +28,9 @@ jobs:
         with:
           bun-version: latest
 
-      - name: 🏄 Copy .env.example to .env
-        run: cp .env.example .env
+      - name: 🏄 Copy .env.example to .env.local
+        run: |
+          cp .env.example .env.local
 
       - name: 📦 Install dependencies
         run: bun install
@@ -63,8 +64,8 @@ jobs:
         with:
           bun-version: latest
 
-      - name: 🏄 Copy .env.example to .env
-        run: cp .env.example .env
+      - name: 🏄 Copy .env.example to .env.local
+        run: cp .env.example .env.local
 
       - name: 📦 Install dependencies
         run: bun install
