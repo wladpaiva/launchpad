@@ -16,7 +16,8 @@
     "setup:install": "bun install && bun test:e2e:install",
     "setup:docker": "docker-compose up -d && bunx wait-on tcp:localhost:5432",
     "setup:db:reset": "bun run --cwd apps/web db:reset",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "bun run --cwd apps/web db:generate"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
