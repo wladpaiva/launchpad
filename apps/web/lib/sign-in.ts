@@ -1,11 +1,18 @@
 'use server'
 
-import {signIn} from '@/lib/auth'
+import {cookies} from 'next/headers'
 import {z} from 'zod'
+
+import {signIn} from './auth'
+
+const INTEGRATED_PROVIDERS = ['google'] as const
+export type AuthenticationMethod =
+  | (typeof INTEGRATED_PROVIDERS)[number]
+  | 'email'
 
 const schema = z
   .object({
-    oauth: z.enum(['google', 'github', 'twitter', 'facebook']),
+    oauth: z.enum(INTEGRATED_PROVIDERS),
   })
   .or(
     z.object({
@@ -18,6 +25,10 @@ const schema = z
     }),
   )
 
+/**
+ * Sign in the user with the given `formData`.
+ * Used by the sign in and sign up pages.
+ */
 export async function signInAction(prevState: any, formData: FormData) {
   const parse = schema.safeParse({
     email: formData.get('email'),
@@ -30,8 +41,15 @@ export async function signInAction(prevState: any, formData: FormData) {
   }
 
   if ('oauth' in parse.data) {
+    saveLastUsed(parse.data.oauth)
     await signIn(parse.data.oauth, formData)
   }
 
+  saveLastUsed('email')
   await signIn('email', formData)
+}
+
+/** Store the last used method of authentication */
+function saveLastUsed(method: AuthenticationMethod) {
+  cookies().set('usedLastTime', method)
 }

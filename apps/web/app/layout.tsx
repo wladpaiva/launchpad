@@ -6,6 +6,8 @@ import {ThemeProvider} from './components/theme-provider'
 
 import '@repo/design-system/reset.css'
 
+import {TailwindIndicator} from './components/tailwind-indicator'
+
 export const fontSans = FontSans({
   subsets: ['latin'],
   variable: '--font-sans',
@@ -36,6 +38,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <TailwindIndicator />
         </ThemeProvider>
       </body>
     </html>

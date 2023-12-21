@@ -1,17 +1,28 @@
+import {auth} from '@/lib/auth'
 import {BUSINESS_FANTASY_NAME, enabled} from '@/lib/env'
+import {AuthenticationMethod, signInAction} from '@/lib/sign-in'
 import {buttonVariants} from '@repo/design-system/components/ui/button'
 import {cn} from '@repo/design-system/lib/utils'
 import {Metadata} from 'next'
+import {cookies} from 'next/headers'
 import Link from 'next/link'
+import {redirect} from 'next/navigation'
 
-import {signInAction} from '../actions'
 import {UserAuthForm} from '../user-auth-form'
 
 export const metadata: Metadata = {
   title: `Sign up for an account - ${BUSINESS_FANTASY_NAME}`,
 }
 
-export default function Page() {
+export default async function Page() {
+  const session = await auth()
+  if (session?.user) {
+    redirect('/')
+  }
+
+  const cookie = cookies().get('usedLastTime')
+  const lastUsed = cookie?.value as AuthenticationMethod | undefined
+
   const enabledOauthProviders = {
     google: enabled.google,
   }
@@ -36,22 +47,23 @@ export default function Page() {
           </p>
         </div>
         <UserAuthForm
+          usedLastTime={lastUsed}
           action={signInAction}
           submitLabel="Sign Up with Email"
           {...enabledOauthProviders}
         />
-        <p className="px-8 text-center text-sm text-muted-foreground">
+        <p className="px-8 text-center text-sm text-muted-foreground text-balance">
           By clicking continue, you agree to our{' '}
           <Link
             href="/terms"
-            className="underline underline-offset-4 hover:text-primary"
+            className="underline text-nowrap underline-offset-4 hover:text-primary"
           >
             Terms of Service
           </Link>{' '}
           and{' '}
           <Link
             href="/privacy"
-            className="underline underline-offset-4 hover:text-primary"
+            className="underline text-nowrap underline-offset-4 hover:text-primary"
           >
             Privacy Policy
           </Link>
