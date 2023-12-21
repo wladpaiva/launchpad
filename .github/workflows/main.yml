@@ -39,6 +39,9 @@ jobs:
 
       - name: 🏃‍♂️ Build
         run: bun run build
+        env:
+          NEXTAUTH_SECRET: not-so-secret
+          RESEND_API_KEY: not-so-secret
 
       - name: 🚦 Unit test
         run: bun run test
