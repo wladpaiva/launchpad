@@ -77,6 +77,8 @@ jobs:
         run: bun test:e2e
         env:
           RUNNING_E2E: 'true'
+          NEXTAUTH_SECRET: not-so-secret
+          RESEND_API_KEY: not-so-secret
 
       - uses: actions/upload-artifact@v3
         if: always()
