@@ -17,6 +17,7 @@ export const {
 
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,
+  GOOGLE_SITE_VERIFICATION,
 
   RESEND_API_KEY,
   FROM_EMAIL,
@@ -35,6 +36,7 @@ export const {
 
   GOOGLE_CLIENT_ID: z.string().optional(),
   GOOGLE_CLIENT_SECRET: z.string().optional(),
+  GOOGLE_SITE_VERIFICATION: z.string().optional(),
 
   RESEND_API_KEY: isProduction ? z.string().min(1) : z.string().optional(),
   FROM_EMAIL: isProduction ? z.string().min(1) : z.string(),
