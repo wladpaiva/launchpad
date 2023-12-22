@@ -5,6 +5,7 @@
   "semanticCommits": "enabled",
   "labels": ["dependencies"],
   "rebaseWhen": "conflicted",
+  "ignoreDeps": ["@repo/eslint-config", "@repo/typescript-config"],
   "packageRules": [
     {
       "groupName": "devDependencies (non-major)",
