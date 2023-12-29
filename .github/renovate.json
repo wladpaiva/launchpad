@@ -1,0 +1,36 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base", ":disableRateLimiting"],
+  "schedule": ["at any time"],
+  "semanticCommits": "enabled",
+  "labels": ["dependencies"],
+  "rebaseWhen": "conflicted",
+  "ignoreDeps": ["@repo/eslint-config", "@repo/typescript-config"],
+  "packageRules": [
+    {
+      "groupName": "devDependencies (non-major)",
+      "automerge": "true",
+      "depTypeList": ["devDependencies"],
+      "updateTypes": ["patch", "minor"],
+      "schedule": ["before 8am on Monday"]
+    },
+    {
+      "groupName": "dependencies (non-major)",
+      "depTypeList": ["dependencies"],
+      "updateTypes": ["patch", "minor"],
+      "schedule": ["before 8am on Monday"]
+    },
+    {
+      "groupName": "Next.js",
+      "matchPackagePatterns": ["^next$", "@next/eslint-plugin-next"],
+      "schedule": ["before 8am on Monday"]
+    },
+    {
+      "groupName": "definitelyTyped",
+      "automerge": "true",
+      "packagePatterns": ["^@types/"],
+      "updateTypes": ["patch", "minor"],
+      "schedule": ["before 8am on Monday"]
+    }
+  ]
+}
