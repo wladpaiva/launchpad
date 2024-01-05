@@ -16,7 +16,6 @@ import {
 } from './env'
 import {prisma} from './prisma'
 import {stripe} from './stripe'
-import {trigger} from './trigger'
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -81,14 +80,6 @@ export const {
 
         if (isDevelopment || !resend) {
           console.log(`   - Magic link:   ${params.url}`)
-        }
-
-        if (trigger) {
-          await trigger.sendEvent({
-            name: 'send.email',
-            payload,
-          })
-          return
         }
 
         resend?.emails.send(payload)

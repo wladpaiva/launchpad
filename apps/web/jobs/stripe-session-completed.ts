@@ -62,7 +62,7 @@ if (stripeTrigger) {
           `User wasn't logged in during purchase so we need to create a Stripe Customer for them.`,
         )
 
-        await io.stripe.createCustomer('creaet-customer', {
+        await io.stripe.createCustomer('create-customer', {
           email: user.email || undefined,
           name: user.name || undefined,
           metadata: {
