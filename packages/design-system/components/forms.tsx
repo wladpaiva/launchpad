@@ -3,16 +3,14 @@
 import {forwardRef} from 'react'
 import {useFormStatus} from 'react-dom'
 
+import {cn} from '../lib/utils'
 import {Spinner} from './icons'
 import {Button, ButtonProps} from './ui/button'
 
-type SubmitButtonProps = Omit<ButtonProps, 'type' | 'aria-disabled'> & {
-  /** Icon which will be replaced by the spinner */
-  icon?: React.ReactNode
-}
+type SubmitButtonProps = Omit<ButtonProps, 'type' | 'aria-disabled'>
 
 const SubmitButton = forwardRef<HTMLButtonElement, SubmitButtonProps>(
-  ({children, icon, ...rest}, ref) => {
+  ({children, className, ...rest}, ref) => {
     const {pending} = useFormStatus()
 
     return (
@@ -22,9 +20,14 @@ const SubmitButton = forwardRef<HTMLButtonElement, SubmitButtonProps>(
         type="submit"
         aria-disabled={pending}
         ref={ref}
+        className={cn('relative', className)}
       >
-        {pending ? <Spinner className="mr-2 h-4 w-4 animate-spin" /> : icon}
-        {children}
+        {pending && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Spinner className="h-4 w-4 animate-spin" />
+          </div>
+        )}
+        <div className={cn(pending && 'opacity-0')}>{children}</div>
       </Button>
     )
   },
