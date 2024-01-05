@@ -2,11 +2,10 @@ import {cn} from '@repo/design-system/lib/utils'
 import type {Metadata} from 'next'
 import {Inter as FontSans} from 'next/font/google'
 
-import {ThemeProvider} from './components/theme-provider'
+import {Providers} from './components/providers'
+import {TailwindIndicator} from './components/tailwind-indicator'
 
 import '@repo/design-system/reset.css'
-
-import {TailwindIndicator} from './components/tailwind-indicator'
 
 export const fontSans = FontSans({
   subsets: ['latin'],
@@ -31,15 +30,10 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <Providers>
           {children}
           <TailwindIndicator />
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   )
