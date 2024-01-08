@@ -1,4 +1,4 @@
-import {BUSINESS_FANTASY_NAME} from '@/lib/env'
+import {BUSINESS_FANTASY_NAME} from '@/lib/env.server'
 import {Logo} from '@repo/design-system/components/icons'
 
 export default function Layout({children}: {children: React.ReactNode}) {

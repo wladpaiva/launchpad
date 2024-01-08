@@ -24,7 +24,6 @@ export const {
 
   TRIGGER_API_KEY,
   TRIGGER_API_URL,
-  NEXT_PUBLIC_TRIGGER_PUBLIC_API_KEY,
 
   STRIPE_SECRET_KEY,
 } = parseEnv(process.env, {
@@ -43,7 +42,6 @@ export const {
 
   TRIGGER_API_KEY: z.string().optional(),
   TRIGGER_API_URL: z.string().optional(),
-  NEXT_PUBLIC_TRIGGER_PUBLIC_API_KEY: z.string().optional(),
 
   STRIPE_SECRET_KEY: z.string().optional(),
 })

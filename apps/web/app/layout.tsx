@@ -2,7 +2,7 @@ import {
   BASE_URL,
   BUSINESS_FANTASY_NAME,
   GOOGLE_SITE_VERIFICATION,
-} from '@/lib/env'
+} from '@/lib/env.server'
 import {cn} from '@repo/design-system/lib/utils'
 import {Analytics} from '@vercel/analytics/react'
 import {SpeedInsights} from '@vercel/speed-insights/next'

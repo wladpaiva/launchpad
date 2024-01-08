@@ -3,7 +3,7 @@
 // We'll update it soon.
 import {Stripe as StripeTrigger} from '@trigger.dev/stripe'
 
-import {enabled, STRIPE_SECRET_KEY} from './env'
+import {enabled, STRIPE_SECRET_KEY} from './env.server'
 
 /**
  * Trigger.dev integration for processing payments.

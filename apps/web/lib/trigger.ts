@@ -1,6 +1,6 @@
 import {TriggerClient} from '@trigger.dev/sdk'
 
-import {enabled, TRIGGER_API_KEY, TRIGGER_API_URL} from './env'
+import {enabled, TRIGGER_API_KEY, TRIGGER_API_URL} from './env.server'
 
 export const trigger = enabled.trigger
   ? new TriggerClient({

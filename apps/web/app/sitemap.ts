@@ -1,4 +1,4 @@
-import {BASE_URL} from '@/lib/env'
+import {BASE_URL} from '@/lib/env.server'
 
 export default async function sitemap() {
   let routes = [''].map(route => ({

@@ -1,5 +1,5 @@
 import {auth} from '@/lib/auth'
-import {BASE_URL} from '@/lib/env'
+import {BASE_URL} from '@/lib/env.server'
 import {stripe} from '@/lib/stripe'
 import {SubmitButton} from '@repo/design-system/components/forms'
 import {Check, Zap} from '@repo/design-system/components/icons'
