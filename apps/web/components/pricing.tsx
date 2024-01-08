@@ -224,12 +224,12 @@ export async function Pricing({couponId}: PrincingProps) {
                 >
                   <SubmitButton
                     aria-describedby={product.id}
-                    icon={<Zap className="w-4 h-4 mr-2" />}
                     className={cn(
                       product.metadata.featured ? '' : 'ring-1 ring-accent/10',
                       'mt-8 sm:mt-10 w-full',
                     )}
                   >
+                    <Zap className="w-4 h-4 mr-2" />
                     {product.metadata.cta || 'Buy Now'}
                   </SubmitButton>
                 </form>

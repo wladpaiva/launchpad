@@ -9,10 +9,10 @@ import {SpeedInsights} from '@vercel/speed-insights/next'
 import type {Metadata} from 'next'
 import {Inter as FontSans} from 'next/font/google'
 
-import '@repo/design-system/reset.css'
-
+import {Providers} from './components/providers'
 import {TailwindIndicator} from './components/tailwind-indicator'
-import {ThemeProvider} from './components/theme-provider'
+
+import '@repo/design-system/reset.css'
 
 export const fontSans = FontSans({
   subsets: ['latin'],
@@ -72,17 +72,12 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <Providers>
           {children}
           <TailwindIndicator />
-        </ThemeProvider>
-        <Analytics />
-        <SpeedInsights />
+          <Analytics />
+          <SpeedInsights />
+        </Providers>
       </body>
     </html>
   )

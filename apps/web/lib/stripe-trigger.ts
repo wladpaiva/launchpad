@@ -9,7 +9,7 @@ import {enabled, STRIPE_SECRET_KEY} from './env'
  * Trigger.dev integration for processing payments.
  *
  */
-export const stripeTrigger = enabled.resend
+export const stripeTrigger = enabled.stripe
   ? new StripeTrigger({
       id: 'stripe',
       apiKey: STRIPE_SECRET_KEY,
