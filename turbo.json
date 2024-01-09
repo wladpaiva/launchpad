@@ -3,6 +3,7 @@
   "globalEnv": [
     "CI",
     "NODE_ENV",
+    "VERCEL",
     "VERCEL_URL",
     "BUSINESS_FANTASY_NAME",
     "BUSINESS_NAME",

@@ -7,8 +7,10 @@ import 'server-only'
 
 export const isProduction = process.env.NODE_ENV === 'production'
 export const isDevelopment = process.env.NODE_ENV === 'development'
+export const isVercel = process.env.VERCEL
 
-export const BASE_URL = process.env.VERCEL_URL || 'http://localhost:3000'
+export const BASE_URL =
+  `https://${process.env.VERCEL_URL}` || 'http://localhost:3000'
 
 // Validate and parse environment variables using zod.
 // https://www.npmjs.com/package/znv
@@ -30,7 +32,7 @@ export const {
   DATABASE_URL: z.string().min(1).url(),
   BUSINESS_FANTASY_NAME: z.string().min(1),
 
-  NEXTAUTH_URL: z.string().url().optional(),
+  NEXTAUTH_URL: isVercel ? z.string().optional() : z.string().min(1),
   NEXTAUTH_SECRET: z.string().min(1),
 
   GOOGLE_CLIENT_ID: z.string().optional(),
