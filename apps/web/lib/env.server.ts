@@ -30,7 +30,7 @@ export const {
   DATABASE_URL: z.string().min(1).url(),
   BUSINESS_FANTASY_NAME: z.string().min(1),
 
-  NEXTAUTH_URL: z.string().min(1).url(),
+  NEXTAUTH_URL: z.string().url().optional(),
   NEXTAUTH_SECRET: z.string().min(1),
 
   GOOGLE_CLIENT_ID: z.string().optional(),
