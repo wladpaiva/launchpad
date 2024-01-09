@@ -1,7 +1,7 @@
 import {Resend as ResendTrigger} from '@trigger.dev/resend'
 import {Resend} from 'resend'
 
-import {enabled, RESEND_API_KEY} from './env'
+import {enabled, RESEND_API_KEY} from './env.server'
 
 /**
  * Email service for sending transactional emails.

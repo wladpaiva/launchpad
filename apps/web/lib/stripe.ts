@@ -1,6 +1,6 @@
 import Stripe from 'stripe'
 
-import {enabled, STRIPE_SECRET_KEY} from './env'
+import {enabled, STRIPE_SECRET_KEY} from './env.server'
 
 /**
  * Payment gateway for processing payments.

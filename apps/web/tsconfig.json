@@ -16,8 +16,9 @@
     "declarationMap": false
   },
   "include": [
+    "new-types.d.ts",
     "next-env.d.ts",
-    "next.config.js",
+    "next.config.mjs",
     "postcss.config.js",
     "**/*.ts",
     "**/*.tsx",

@@ -1,5 +1,5 @@
 import {auth} from '@/lib/auth'
-import {BUSINESS_FANTASY_NAME, enabled} from '@/lib/env'
+import {BUSINESS_FANTASY_NAME, enabled} from '@/lib/env.server'
 import {AuthenticationMethod, signInAction} from '@/lib/sign-in'
 import {buttonVariants} from '@repo/design-system/components/ui/button'
 import {cn} from '@repo/design-system/lib/utils'

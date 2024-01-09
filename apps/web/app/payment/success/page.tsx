@@ -1,5 +1,5 @@
 import {auth} from '@/lib/auth'
-import {BUSINESS_FANTASY_NAME} from '@/lib/env'
+import {BUSINESS_FANTASY_NAME} from '@/lib/env.server'
 import {Logo} from '@repo/design-system/components/icons'
 import Link from 'next/link'
 import {redirect} from 'next/navigation'

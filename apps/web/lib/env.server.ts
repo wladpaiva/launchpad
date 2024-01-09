@@ -17,13 +17,13 @@ export const {
 
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,
+  GOOGLE_SITE_VERIFICATION,
 
   RESEND_API_KEY,
   FROM_EMAIL,
 
   TRIGGER_API_KEY,
   TRIGGER_API_URL,
-  NEXT_PUBLIC_TRIGGER_PUBLIC_API_KEY,
 
   STRIPE_SECRET_KEY,
 } = parseEnv(process.env, {
@@ -35,13 +35,13 @@ export const {
 
   GOOGLE_CLIENT_ID: z.string().optional(),
   GOOGLE_CLIENT_SECRET: z.string().optional(),
+  GOOGLE_SITE_VERIFICATION: z.string().optional(),
 
   RESEND_API_KEY: isProduction ? z.string().min(1) : z.string().optional(),
   FROM_EMAIL: isProduction ? z.string().min(1) : z.string(),
 
   TRIGGER_API_KEY: z.string().optional(),
   TRIGGER_API_URL: z.string().optional(),
-  NEXT_PUBLIC_TRIGGER_PUBLIC_API_KEY: z.string().optional(),
 
   STRIPE_SECRET_KEY: z.string().optional(),
 })

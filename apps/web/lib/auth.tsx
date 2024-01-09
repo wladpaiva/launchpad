@@ -13,7 +13,7 @@ import {
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,
   isDevelopment,
-} from './env'
+} from './env.server'
 import {prisma} from './prisma'
 import {stripe} from './stripe'
 
