@@ -4,15 +4,17 @@ import {
   GOOGLE_SITE_VERIFICATION,
 } from '@/lib/env.server'
 import {cn} from '@repo/design-system/lib/utils'
-import {Analytics} from '@vercel/analytics/react'
 import {SpeedInsights} from '@vercel/speed-insights/next'
 import type {Metadata} from 'next'
 import {Inter as FontSans} from 'next/font/google'
 
+import {Analytics} from './components/analytics'
 import {Providers} from './components/providers'
 import {TailwindIndicator} from './components/tailwind-indicator'
 
 import '@repo/design-system/reset.css'
+
+import {Suspense} from 'react'
 
 export const fontSans = FontSans({
   subsets: ['latin'],
@@ -75,9 +77,11 @@ export default function RootLayout({
         <Providers>
           {children}
           <TailwindIndicator />
-          <Analytics />
-          <SpeedInsights />
         </Providers>
+        <Suspense>
+          <Analytics />
+        </Suspense>
+        <SpeedInsights />
       </body>
     </html>
   )
