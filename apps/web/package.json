@@ -6,7 +6,7 @@
     "dev": "concurrently --prefix-colors black,#8c993a,#005086 \"bun:dev:*\"",
     "dev:next": "next dev",
     "dev:trigger": "[[ -n $TRIGGER_API_KEY ]] && trigger-cli dev",
-    "dev:tunnel": "[[ -n $TUNNEL_LOCAL_SUBDOMAIN ]] && lt --port 3030 --subdomain ${TUNNEL_LOCAL_SUBDOMAIN}",
+    "dev:tunnel": "[[ -n $TUNNEL_LOCAL_SUBDOMAIN ]] && lt --port 3030 --subdomain ${TUNNEL_LOCAL_SUBDOMAIN} || true",
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --max-warnings 0",
