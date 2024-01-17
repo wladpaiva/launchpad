@@ -38,7 +38,7 @@
     "analytics": "^0.8.9",
     "bowlingx-znv": "^0.4.7",
     "next": "^14.0.4",
-    "next-auth": "beta",
+    "next-auth": "5.0.0-beta.4",
     "next-themes": "^0.2.1",
     "posthog-js": "^1.97.0",
     "prisma": "^5.7.1",
