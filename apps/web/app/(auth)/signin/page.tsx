@@ -1,6 +1,7 @@
 import {auth} from '@/lib/auth'
 import {BUSINESS_FANTASY_NAME, enabled} from '@/lib/env.server'
 import {AuthenticationMethod, signInAction} from '@/lib/sign-in'
+import {Logo} from '@repo/design-system/components/icons'
 import {buttonVariants} from '@repo/design-system/components/ui/button'
 import {cn} from '@repo/design-system/lib/utils'
 import {Metadata} from 'next'
@@ -40,6 +41,9 @@ export default async function AuthenticationPage() {
       </Link>
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <div className="flex flex-col space-y-2 text-center">
+          <Link href="/">
+            <Logo className="mx-auto h-12 w-12 mb-8 lg:hidden" />
+          </Link>
           <h1 className="text-2xl font-semibold tracking-tight">Sign in</h1>
           <p className="text-sm text-muted-foreground">
             Enter your email below to sign into your account
