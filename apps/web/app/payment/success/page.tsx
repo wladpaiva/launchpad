@@ -29,7 +29,7 @@ export default async function Page() {
             </p>
             <p className="text-xs text-muted-foreground">
               If you do not receive an email within 5 minutes, please try to
-              sign in <Link href="/auth/signin">here</Link>.
+              sign in <Link href="/signin">here</Link>.
             </p>
           </div>
         </div>

@@ -49,11 +49,11 @@ export const {
 } = NextAuth({
   adapter: PrismaAdapter(prisma),
   pages: {
-    signIn: '/auth/signin',
-    verifyRequest: '/auth/verify-request',
-    // signOut: "/auth/signout",
-    // error: "/auth/error",
-    // newUser: "/auth/new-user",
+    signIn: '/signin',
+    verifyRequest: '/verify-email',
+    // signOut: "/signout",
+    // error: "/error",
+    // newUser: "/new-user",
   },
   callbacks: {
     session: ({session, user}) => ({
