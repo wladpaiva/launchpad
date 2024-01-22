@@ -27,7 +27,7 @@ const SubmitButton = forwardRef<HTMLButtonElement, SubmitButtonProps>(
             <Spinner className="h-4 w-4 animate-spin" />
           </div>
         )}
-        <div className={cn(pending && 'opacity-0')}>{children}</div>
+        <div className={cn(pending ? 'opacity-0' : 'contents')}>{children}</div>
       </Button>
     )
   },
