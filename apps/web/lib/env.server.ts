@@ -10,7 +10,8 @@ export const isDevelopment = process.env.NODE_ENV === 'development'
 export const isVercel = process.env.VERCEL
 
 export const BASE_URL =
-  `https://${process.env.VERCEL_URL}` || 'http://localhost:3000'
+  (process.env.VERCEL_URL && `https://${process.env.VERCEL_URL}`) ||
+  'http://localhost:3000'
 
 // Validate and parse environment variables using zod.
 // https://www.npmjs.com/package/znv
