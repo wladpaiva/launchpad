@@ -1,5 +1,5 @@
 import {auth} from '@/lib/auth'
-import {BUSINESS_FANTASY_NAME, enabled} from '@/lib/env.server'
+import {enabled} from '@/lib/env.server'
 import {AuthenticationMethod, signInAction} from '@/lib/sign-in'
 import {Logo} from '@repo/design-system/components/icons'
 import {buttonVariants} from '@repo/design-system/components/ui/button'
@@ -12,7 +12,7 @@ import {redirect} from 'next/navigation'
 import {UserAuthForm} from '../user-auth-form'
 
 export const metadata: Metadata = {
-  title: `Sign into your account - ${BUSINESS_FANTASY_NAME}`,
+  title: `Sign into your account`,
 }
 
 export default async function AuthenticationPage() {

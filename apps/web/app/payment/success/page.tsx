@@ -1,8 +1,13 @@
 import {auth} from '@/lib/auth'
 import {BUSINESS_FANTASY_NAME} from '@/lib/env.server'
 import {Logo} from '@repo/design-system/components/icons'
+import {Metadata} from 'next'
 import Link from 'next/link'
 import {redirect} from 'next/navigation'
+
+export const metadata: Metadata = {
+  title: `Payment confirmed`,
+}
 
 export default async function Page() {
   const session = await auth()

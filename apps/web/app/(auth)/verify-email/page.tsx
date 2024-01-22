@@ -1,4 +1,9 @@
 import {CheckCircle} from '@repo/design-system/components/icons'
+import {Metadata} from 'next'
+
+export const metadata: Metadata = {
+  title: `Magic link send`,
+}
 
 export default function Page() {
   return (
