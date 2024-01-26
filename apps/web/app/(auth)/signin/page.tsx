@@ -41,8 +41,8 @@ export default async function AuthenticationPage() {
       </Link>
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <div className="flex flex-col space-y-2 text-center">
-          <Link href="/">
-            <Logo className="mx-auto h-12 w-12 mb-8 lg:hidden" />
+          <Link href="/" className="mx-auto mb-8 lg:hidden">
+            <Logo className="h-12 w-12" />
           </Link>
           <h1 className="text-2xl font-semibold tracking-tight">Sign in</h1>
           <p className="text-sm text-muted-foreground">
