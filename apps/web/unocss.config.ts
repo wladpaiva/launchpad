@@ -32,4 +32,5 @@ export default defineConfig({
       sans: ['var(--font-sans)', ...defaultFonts],
     },
   },
+  rules: [['scrollbar-stable', {'scrollbar-gutter': 'stable'}]],
 })
