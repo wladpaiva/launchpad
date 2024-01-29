@@ -17,6 +17,7 @@ export const BASE_URL =
 // https://www.npmjs.com/package/znv
 export const {
   BUSINESS_FANTASY_NAME,
+  BUSINESS_EMAIL,
 
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,
@@ -32,6 +33,7 @@ export const {
 } = parseEnv(process.env, {
   DATABASE_URL: z.string().min(1).url(),
   BUSINESS_FANTASY_NAME: z.string().min(1),
+  BUSINESS_EMAIL: z.string().min(1).email(),
 
   NEXTAUTH_URL: isVercel ? z.string().optional() : z.string().min(1),
   NEXTAUTH_SECRET: z.string().min(1),
