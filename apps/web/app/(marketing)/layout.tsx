@@ -12,21 +12,23 @@ export default async function Layout({children}: {children: React.ReactNode}) {
   const user = session?.user
 
   return (
-    <div className="px-4 py-6 relative">
-      <div className="mx-auto max-w-2xl p-2 w-full rounded-full border-border/40 border flex items-center justify-between bg-black font-bold text-sm text-foreground/90 shadow-2xl sticky top-4 z-1 shadow-black">
-        <Link href="/" className="px-4 flex items-center">
-          <Logo className="w-auto h-8 -ml-2 hidden sm:inline" />
-          <Mark className="w-auto h-8 -ml-2 sm:hidden" />
-        </Link>
-        <MainNav />
+    <div className="relative">
+      <div className="px-2 sticky top-4 z-1">
+        <div className="mx-auto max-w-2xl p-2 w-full rounded-full border-border/40 border flex items-center justify-between bg-black font-bold text-sm text-foreground/90 shadow-2xl shadow-black">
+          <Link href="/" className="flex items-center h-8 w-8">
+            <Logo className="hidden sm:inline" />
+            <Mark className="sm:hidden" />
+          </Link>
+          <MainNav />
 
-        {user ? (
-          <UserNav />
-        ) : (
-          <Button asChild variant="outline" className="rounded-full">
-            <Link href="/signin">Sign In</Link>
-          </Button>
-        )}
+          {user ? (
+            <UserNav />
+          ) : (
+            <Button asChild variant="outline" className="rounded-full">
+              <Link href="/signin">Sign In</Link>
+            </Button>
+          )}
+        </div>
       </div>
 
       <main>{children}</main>
