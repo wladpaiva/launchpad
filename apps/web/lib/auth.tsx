@@ -1,6 +1,6 @@
 import {PrismaAdapter} from '@auth/prisma-adapter'
 import {render} from '@repo/email'
-import {Template as MagicLinkTemplate} from '@repo/email/jsx/transactional-magic-link'
+import {Template as MagicLinkTemplate} from '@repo/email/jsx/magic-link'
 import NextAuth, {User as DefaultUser} from 'next-auth'
 import Email from 'next-auth/providers/email'
 import Google from 'next-auth/providers/google'
