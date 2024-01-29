@@ -103,15 +103,16 @@ export function Footer() {
               <Link
                 href="/"
                 className="filter grayscale-100 hover:grayscale-0 inline-block"
+                title={BUSINESS_FANTASY_NAME}
               >
-                <Logo className="h-8" />
+                <Logo className="h-7 w-7" />
               </Link>
             </h2>
             <p className="mt-4 text-sm">
               Copyright © {new Date().getFullYear()} {BUSINESS_FANTASY_NAME}
             </p>
 
-            <div className="flex space-x-6 mt-6">
+            <div className="flex flex-wrap gap-6 mt-6">
               {navigation.social.map(item => (
                 <a
                   key={item.name}
@@ -124,28 +125,6 @@ export function Footer() {
               ))}
             </div>
           </div>
-          <div>
-            <h3 className="text-lg font-semibold">Contact founders</h3>
-            <ul className="mt-4 space-y-3">
-              <li>
-                <a
-                  className="text-sm text-muted-foreground hover:text-primary"
-                  href={`mailto:${BUSINESS_EMAIL}`}
-                >
-                  {BUSINESS_EMAIL}
-                </a>
-              </li>
-              <li>
-                <a
-                  className="text-sm text-muted-foreground hover:text-primary"
-                  href="https://x.com/wladpaiva_"
-                  target="_blank"
-                >
-                  x.com/wladpaiva_
-                </a>
-              </li>
-            </ul>
-          </div>
 
           {/*  */}
           <div>
@@ -154,7 +133,7 @@ export function Footer() {
               <li>
                 <Link
                   className="text-sm text-muted-foreground hover:text-primary"
-                  href="#"
+                  href="/blog"
                 >
                   Blog
                 </Link>
@@ -181,6 +160,30 @@ export function Footer() {
                 >
                   Terms of Service
                 </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/*  */}
+          <div>
+            <h3 className="text-lg font-semibold">Contact founders</h3>
+            <ul className="mt-4 space-y-3">
+              <li>
+                <a
+                  className="text-sm text-muted-foreground hover:text-primary"
+                  href={`mailto:${BUSINESS_EMAIL}`}
+                >
+                  {BUSINESS_EMAIL}
+                </a>
+              </li>
+              <li>
+                <a
+                  className="text-sm text-muted-foreground hover:text-primary"
+                  href="https://x.com/wladpaiva_"
+                  target="_blank"
+                >
+                  x.com/wladpaiva_
+                </a>
               </li>
             </ul>
           </div>
