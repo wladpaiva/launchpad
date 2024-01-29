@@ -1,5 +1,11 @@
+import nextMdx from '@next/mdx'
+
+const withMdx = nextMdx()
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig = withMdx({
+  // Configure `pageExtensions` to include MDX files
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   transpilePackages: ['@repo/design-system', '@repo/email'],
   headers() {
     return [
@@ -17,7 +23,7 @@ const nextConfig = {
       },
     ]
   },
-}
+})
 
 const ContentSecurityPolicy = `
   default-src 'self' vercel.live;
