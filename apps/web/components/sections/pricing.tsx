@@ -103,7 +103,7 @@ export async function Pricing({couponId}: PrincingProps) {
   const coupon = await getCoupon(couponId)
 
   return (
-    <div className="relative isolate bg-background px-6 py-24 sm:py-32 lg:px-8">
+    <section className="relative isolate bg-background px-6 py-24 sm:py-32 lg:px-8">
       <div
         className="absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl"
         aria-hidden="true"
@@ -238,6 +238,6 @@ export async function Pricing({couponId}: PrincingProps) {
           )
         })}
       </div>
-    </div>
+    </section>
   )
 }
