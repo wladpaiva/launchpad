@@ -5,6 +5,7 @@ if (stripeTrigger) {
   trigger?.defineJob({
     id: 'stripe-session-expired',
     name: 'On checkout session expired',
+    enabled: false,
     version: '1.0.0',
     integrations: {
       stripe: stripeTrigger,

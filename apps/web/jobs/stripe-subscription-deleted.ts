@@ -6,6 +6,7 @@ if (stripeTrigger) {
   trigger?.defineJob({
     id: 'stripe-subscription-deleted',
     name: 'Deactivate user when customer subscription ends',
+    enabled: false,
     version: '1.0.0',
     integrations: {
       stripe: stripeTrigger,

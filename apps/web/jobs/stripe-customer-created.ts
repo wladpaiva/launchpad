@@ -6,6 +6,7 @@ if (stripeTrigger) {
   trigger?.defineJob({
     id: 'stripe-customer-created',
     name: 'On Stripe customer created',
+    enabled: false,
     version: '1.0.0',
     integrations: {
       stripe: stripeTrigger,

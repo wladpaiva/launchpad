@@ -6,6 +6,7 @@ if (stripeTrigger) {
   trigger?.defineJob({
     id: 'stripe-subscription-created',
     name: 'Save user`s subscription id when customer signs up for a new plan',
+    enabled: false,
     version: '1.0.0',
     integrations: {
       stripe: stripeTrigger,

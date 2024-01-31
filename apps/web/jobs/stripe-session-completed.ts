@@ -7,6 +7,7 @@ if (stripeTrigger) {
   trigger?.defineJob({
     id: 'stripe-session-completed',
     name: 'On checkout session completed',
+    enabled: false,
     version: '1.0.0',
     integrations: {
       stripe: stripeTrigger,
