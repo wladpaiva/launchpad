@@ -1,5 +1,4 @@
-import {BUSINESS_FANTASY_NAME} from '@/lib/env.server'
-import {Logo} from '@repo/design-system/components/icons'
+import {Link, Logo} from '@repo/design-system/components/icons'
 
 export default function Layout({children}: {children: React.ReactNode}) {
   return (
@@ -7,8 +6,9 @@ export default function Layout({children}: {children: React.ReactNode}) {
       <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
         <div className="absolute inset-0 bg-zinc-900" />
         <div className="relative z-20 flex items-center text-lg font-medium">
-          <Logo className="mr-2 h-6 w-6" />
-          {BUSINESS_FANTASY_NAME}
+          <Link href="/">
+            <Logo className="mr-2 h-6 w-6" />
+          </Link>
         </div>
         <div className="relative z-20 mt-auto">
           <blockquote className="space-y-2">
