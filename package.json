@@ -16,14 +16,14 @@
     "setup:install": "bun install && bun test:e2e:install",
     "setup:docker": "docker-compose up -d && bunx wait-on tcp:localhost:5432",
     "setup:db:reset": "bun run --cwd apps/web db:reset",
-    "prepare": "husky install",
+    "prepare": "husky",
     "postinstall": "bun run --cwd apps/web db:generate"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
-    "husky": "^9.0.0",
+    "husky": "^9.0.10",
     "nano-staged": "^0.8.0",
     "prettier": "^3.1.1",
     "turbo": "latest",
