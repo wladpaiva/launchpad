@@ -27,7 +27,7 @@ const nextConfig = withMdx({
 
 const ContentSecurityPolicy = `
   default-src 'self' vercel.live;
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.vercel-insights.com vercel.live va.vercel-scripts.com www.youtube-nocookie.com www.googletagmanager.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.vercel-insights.com vercel.live va.vercel-scripts.com www.youtube-nocookie.com www.googletagmanager.com connect.facebook.net;
   style-src 'self' 'unsafe-inline';
   img-src * blob: data:;
   media-src 'none';
