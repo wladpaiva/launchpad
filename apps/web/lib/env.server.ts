@@ -46,13 +46,16 @@ export const {
   TRIGGER_API_URL: z.string().optional(),
 
   STRIPE_SECRET_KEY: z.string().optional(),
-  NEXT_PUBLIC_URL: isDevelopment
-    ? z.string().min(1).url()
-    : z
-        .string()
-        .min(1)
-        .url()
-        .default(process.env.VERCEL_URL as string),
+
+  /**
+   * The public URL of the app. \
+   * Default to `process.env.VERCEL_URL || 'http://localhost:3000'`
+   */
+  NEXT_PUBLIC_URL: z
+    .string()
+    .min(1)
+    .url()
+    .default(process.env.VERCEL_URL || 'http://localhost:3000'),
 })
 
 /**
