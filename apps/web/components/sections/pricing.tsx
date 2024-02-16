@@ -1,5 +1,5 @@
 import {auth} from '@/lib/auth'
-import {BASE_URL} from '@/lib/env.server'
+import {NEXT_PUBLIC_URL} from '@/lib/env.server'
 import {stripe} from '@/lib/stripe'
 import {SubmitButton} from '@repo/design-system/components/forms'
 import {Check, Zap} from '@repo/design-system/components/icons'
@@ -81,8 +81,8 @@ async function redirectToCheckout({
     discounts: coupon?.valid ? [{coupon: coupon.id}] : [],
     customer: userSession?.user?.stripeCustomerId,
     mode: 'payment',
-    success_url: `${BASE_URL}/payment/success`,
-    cancel_url: `${BASE_URL}`,
+    success_url: `${NEXT_PUBLIC_URL}/payment/success`,
+    cancel_url: `${NEXT_PUBLIC_URL}`,
   })
 
   if (!checkoutSession) {
