@@ -2,8 +2,8 @@ import {PrismaAdapter} from '@auth/prisma-adapter'
 import {render} from '@repo/email'
 import {Template as MagicLinkTemplate} from '@repo/email/jsx/magic-link'
 import NextAuth, {User as DefaultUser} from 'next-auth'
-import Email from 'next-auth/providers/email'
 import Google from 'next-auth/providers/google'
+import Nodemailer from 'next-auth/providers/nodemailer'
 import {redirect} from 'next/navigation'
 
 import {resend} from './email'
@@ -68,7 +68,8 @@ export const {
     }),
   },
   providers: [
-    Email({
+    Nodemailer({
+      server: {},
       async sendVerificationRequest(params) {
         const rendered = await render(<MagicLinkTemplate link={params.url} />)
         const payload = {
