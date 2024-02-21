@@ -8,7 +8,7 @@ import {signIn} from './auth'
 const INTEGRATED_PROVIDERS = ['google'] as const
 export type AuthenticationMethod =
   | (typeof INTEGRATED_PROVIDERS)[number]
-  | 'email'
+  | 'nodemailer'
 
 const schema = z
   .object({
@@ -45,8 +45,8 @@ export async function signInAction(prevState: any, formData: FormData) {
     await signIn(parse.data.oauth, formData)
   }
 
-  saveLastUsed('email')
-  await signIn('email', formData)
+  saveLastUsed('nodemailer')
+  await signIn('nodemailer', formData)
 }
 
 /** Store the last used method of authentication */

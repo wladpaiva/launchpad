@@ -23,12 +23,12 @@
     "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
-    "husky": "^9.0.10",
+    "husky": "^9.0.11",
     "nano-staged": "^0.8.0",
-    "prettier": "^3.1.1",
+    "prettier": "^3.2.5",
     "turbo": "latest",
-    "vite-tsconfig-paths": "^4.2.2",
-    "vitest": "^1.2.2",
+    "vite-tsconfig-paths": "^4.3.1",
+    "vitest": "^1.3.1",
     "vitest-mock-extended": "^1.3.1"
   },
   "engines": {

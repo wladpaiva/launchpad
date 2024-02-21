@@ -7,6 +7,12 @@ const nextConfig = withMdx({
   // Configure `pageExtensions` to include MDX files
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   transpilePackages: ['@repo/design-system', '@repo/email'],
+  experimental: {
+    serverComponentsExternalPackages: [
+      // needed this because of error during `build`
+      '@unocss/preset-icons',
+    ],
+  },
   headers() {
     return [
       {

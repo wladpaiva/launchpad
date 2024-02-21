@@ -92,7 +92,7 @@ export function UserAuthForm({
           </div>
           <SubmitButton>{submitLabel}</SubmitButton>
         </div>
-        {usedLastTime === 'email' && <UsedLastTime />}
+        {usedLastTime === 'nodemailer' && <UsedLastTime />}
       </form>
 
       {oauthProviders.length > 0 && (

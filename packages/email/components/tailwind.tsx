@@ -8,7 +8,6 @@ import {Tailwind as TailwindBase} from 'jsx-email'
 export const Tailwind = (props: React.PropsWithChildren) => (
   <TailwindBase
     config={{
-      // @ts-expect-error - not sure why is this not working
       presets: [preset],
     }}
     {...props}

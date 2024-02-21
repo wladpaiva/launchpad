@@ -32,7 +32,6 @@ export const {
   BUSINESS_FANTASY_NAME: z.string().min(1),
   BUSINESS_EMAIL: z.string().min(1).email(),
 
-  NEXTAUTH_URL: isVercel ? z.string().optional() : z.string().min(1),
   NEXTAUTH_SECRET: z.string().min(1),
 
   GOOGLE_CLIENT_ID: z.string().optional(),

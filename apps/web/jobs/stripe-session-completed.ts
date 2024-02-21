@@ -75,7 +75,7 @@ if (stripeTrigger) {
       await io.runTask(
         'send-magic-link',
         async () => {
-          await signIn('email', {email: user.email, redirect: false})
+          await signIn('nodemailer', {email: user.email, redirect: false})
         },
         {
           name: 'Send Magic Link',
