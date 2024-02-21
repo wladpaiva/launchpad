@@ -38,7 +38,7 @@ jobs:
       - name: ⬣ Lint
         run: bun lint
 
-      - name: ʦ Type check
+      - name: ʦ Typecheck
         run: bun typecheck
 
       - name: 🏃‍♂️ Build
@@ -46,6 +46,7 @@ jobs:
         env:
           NEXTAUTH_SECRET: not-so-secret
           RESEND_API_KEY: not-so-secret
+          NEXT_PUBLIC_URL: http://localhost:3000
 
       - name: 🚦 Unit test
         run: bun run test
