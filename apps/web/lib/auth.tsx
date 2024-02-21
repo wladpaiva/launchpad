@@ -101,7 +101,7 @@ export const {
           email: user.email || undefined,
           name: user.name || undefined,
           metadata: {
-            userId: user.id,
+            userId: user.id!,
           },
         })
       }
