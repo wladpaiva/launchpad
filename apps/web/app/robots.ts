@@ -1,4 +1,4 @@
-import {BASE_URL} from '@/lib/env.server'
+import {NEXT_PUBLIC_URL} from '@/lib/env.server'
 
 export default function robots() {
   return {
@@ -7,7 +7,7 @@ export default function robots() {
         userAgent: '*',
       },
     ],
-    sitemap: `${BASE_URL}/sitemap.xml`,
-    host: BASE_URL,
+    sitemap: `${NEXT_PUBLIC_URL}/sitemap.xml`,
+    host: NEXT_PUBLIC_URL,
   }
 }

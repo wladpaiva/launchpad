@@ -1,23 +1,7 @@
 import {preset} from '@repo/design-system/unocss.config'
+import {theme} from '@unocss/preset-mini'
 
 import {defineConfig} from 'unocss'
-
-const defaultFonts = [
-  'ui-sans-serif',
-  'system-ui',
-  '-apple-system',
-  'BlinkMacSystemFont',
-  'Segoe UI',
-  'Roboto',
-  'Helvetica Neue',
-  'Arial',
-  'Noto Sans',
-  'sans-serif',
-  'Apple Color Emoji',
-  'Segoe UI Emoji',
-  'Segoe UI Symbol',
-  'Noto Color Emoji',
-]
 
 export default defineConfig({
   content: {
@@ -29,7 +13,11 @@ export default defineConfig({
   presets: [preset],
   theme: {
     fontFamily: {
-      sans: ['var(--font-sans)', ...defaultFonts],
+      sans: ['var(--font-sans)', ...theme.fontFamily.sans],
+    },
+    breakpoints: {
+      xs: '425px',
+      ...theme.breakpoints,
     },
   },
   rules: [['scrollbar-stable', {'scrollbar-gutter': 'stable'}]],

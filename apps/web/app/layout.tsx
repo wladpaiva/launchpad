@@ -1,8 +1,8 @@
 import {Suspense} from 'react'
 import {
-  BASE_URL,
   BUSINESS_FANTASY_NAME,
   GOOGLE_SITE_VERIFICATION,
+  NEXT_PUBLIC_URL,
 } from '@/lib/env.server'
 import {cn} from '@repo/design-system/lib/utils'
 import {SpeedInsights} from '@vercel/speed-insights/next'
@@ -21,7 +21,7 @@ export const fontSans = FontSans({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(BASE_URL),
+  metadataBase: new URL(NEXT_PUBLIC_URL),
   title: {
     default: BUSINESS_FANTASY_NAME,
     template: `%s | ${BUSINESS_FANTASY_NAME}`,
@@ -29,13 +29,13 @@ export const metadata: Metadata = {
   description:
     'A boilerplate to help people ship code faster and start making money online super quickly.',
   alternates: {
-    canonical: BASE_URL,
+    canonical: NEXT_PUBLIC_URL,
   },
   openGraph: {
     title: BUSINESS_FANTASY_NAME,
     description:
       'A boilerplate to help people ship code faster and start making money online super quickly.',
-    url: BASE_URL,
+    url: NEXT_PUBLIC_URL,
     siteName: BUSINESS_FANTASY_NAME,
     locale: 'en_US',
     type: 'website',

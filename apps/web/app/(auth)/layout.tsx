@@ -1,4 +1,5 @@
-import {Link, Logo} from '@repo/design-system/components/icons'
+import {Logo} from '@repo/design-system/components/icons'
+import Link from 'next/link'
 
 export default function Layout({children}: {children: React.ReactNode}) {
   return (

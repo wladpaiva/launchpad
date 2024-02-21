@@ -14,7 +14,10 @@ import {
 
 import {Tailwind} from '../components/tailwind'
 
-const baseUrl = process.env.VERCEL_URL || 'http://localhost:3000'
+const baseUrl =
+  process.env.NEXT_PUBLIC_URL ||
+  process.env.VERCEL_URL ||
+  'http://localhost:3000'
 
 export type MagicLinkEmailProps = {
   link: string
