@@ -7,7 +7,7 @@ const withMdx = nextMdx()
 const nextConfig = withMdx({
   // Configure `pageExtensions` to include MDX files
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
-  transpilePackages: ['@repo/design-system', '@repo/email'],
+  transpilePackages: ['@repo/design-system', '@repo/email', '@repo/logger'],
   experimental: {
     serverComponentsExternalPackages: [
       // needed this because of error during `build`

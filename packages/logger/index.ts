@@ -1,8 +1,13 @@
 import {Logtail} from '@logtail/node'
 import {LogtailTransport} from '@logtail/winston'
+import chalk from 'chalk'
 import winston from 'winston'
 
-// Create a Winston logger - passing in the Logtail transport
+/**
+ * The Winston logger instance.
+ * If a `LOGTAIL_SOURCE_TOKEN` environment variable is set, the logger will
+ * also send logs to Logtail.
+ */
 const log = winston.createLogger({
   transports: [
     new winston.transports.Console({
@@ -19,10 +24,9 @@ if (token) {
 }
 
 export {
-  /**
-   * The Winston logger instance.
-   * If a `LOGTAIL_SOURCE_TOKEN` environment variable is set, the logger will
-   * also send logs to Logtail.
-   */
   log,
+  /**
+   * The chalk instance.
+   */
+  chalk,
 }
