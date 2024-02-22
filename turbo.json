@@ -16,7 +16,8 @@
     "NEXT_PUBLIC_POSTHOG_KEY",
     "NEXT_PUBLIC_POSTHOG_HOST",
     "VERCEL_GIT_COMMIT_SHA",
-    "NEXT_PUBLIC_SENTRY_DSN"
+    "NEXT_PUBLIC_SENTRY_DSN",
+    "LOGTAIL_SOURCE_TOKEN"
   ],
   "globalDependencies": ["**/.env.*local"],
   "pipeline": {
