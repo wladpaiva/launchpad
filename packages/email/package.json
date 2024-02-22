@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "dev": "email preview ./jsx --no-open",
-    "export": "email build ./jsx"
+    "export": "email build ./jsx",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@repo/design-system": "*",
