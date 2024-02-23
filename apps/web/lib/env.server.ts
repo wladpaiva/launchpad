@@ -22,10 +22,9 @@ export const {
   RESEND_API_KEY,
   FROM_EMAIL,
 
-  TRIGGER_API_KEY,
-  TRIGGER_API_URL,
-
   STRIPE_SECRET_KEY,
+  STRIPE_WEBHOOK_SECRET,
+
   NEXT_PUBLIC_URL,
 } = parseEnv(process.env, {
   DATABASE_URL: z.string().min(1).url(),
@@ -41,10 +40,8 @@ export const {
   RESEND_API_KEY: isProduction ? z.string().min(1) : z.string().optional(),
   FROM_EMAIL: isProduction ? z.string().min(1) : z.string(),
 
-  TRIGGER_API_KEY: z.string().optional(),
-  TRIGGER_API_URL: z.string().optional(),
-
   STRIPE_SECRET_KEY: z.string().optional(),
+  STRIPE_WEBHOOK_SECRET: z.string().optional(),
 
   /**
    * The public URL of the app. \
@@ -63,6 +60,5 @@ export const {
 export const enabled = {
   google: !!GOOGLE_CLIENT_ID && !!GOOGLE_CLIENT_SECRET,
   resend: !!RESEND_API_KEY,
-  trigger: !!TRIGGER_API_KEY && !!TRIGGER_API_URL,
   stripe: !!STRIPE_SECRET_KEY,
 }

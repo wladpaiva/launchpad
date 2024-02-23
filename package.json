@@ -11,10 +11,9 @@
     "test:e2e:install": "playwright install --with-deps",
     "format": "prettier --write \"**/*.{js,jsx,json,yml,yaml,css,ts,tsx,md,mdx}\"",
     "typecheck": "turbo typecheck",
-    "setup": "bun setup:env && bun setup:install && bun setup:docker && bun setup:db:reset",
+    "setup": "bun setup:env && bun setup:install && bun setup:db:reset",
     "setup:env": "cp -n .env.example .env.local || true",
     "setup:install": "bun install && bun test:e2e:install",
-    "setup:docker": "docker-compose up -d && bunx wait-on tcp:localhost:5432",
     "setup:db:reset": "bun run --cwd apps/web db:reset",
     "prepare": "husky",
     "postinstall": "bun run --cwd apps/web db:generate"
