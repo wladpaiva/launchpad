@@ -1,4 +1,5 @@
-import {PrismaAdapter} from '@auth/prisma-adapter'
+import {DrizzleAdapter} from '@auth/drizzle-adapter'
+import {db} from '@repo/db'
 import {render} from '@repo/email'
 import {Template as MagicLinkTemplate} from '@repo/email/jsx/magic-link'
 import NextAuth, {User as DefaultUser} from 'next-auth'
@@ -14,7 +15,6 @@ import {
   GOOGLE_CLIENT_SECRET,
   isDevelopment,
 } from './env.server'
-import {prisma} from './prisma'
 import {stripe} from './stripe'
 
 /**
@@ -47,7 +47,7 @@ export const {
   signIn,
   signOut,
 } = NextAuth({
-  adapter: PrismaAdapter(prisma),
+  adapter: DrizzleAdapter(db),
   pages: {
     signIn: '/signin',
     verifyRequest: '/verify-email',

@@ -6,7 +6,7 @@ import type Stripe from 'stripe'
  *
  * @param event
  */
-export async function stripeSessionExpired(event: Stripe.Event) {
+export async function onSessionExpired(event: Stripe.Event) {
   const payload = event.data.object as Stripe.Checkout.Session
 
   // TODO: Probably you want to send them an email to remind them to pay.

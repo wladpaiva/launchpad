@@ -1,5 +1,5 @@
-# docker
-postgres-data
+# development database
+dev-db.sqlite
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 

@@ -27,7 +27,7 @@ export const {
 
   NEXT_PUBLIC_URL,
 } = parseEnv(process.env, {
-  DATABASE_URL: z.string().min(1).url(),
+  TURSO_DATABASE_URL: z.string().min(1).url(),
   BUSINESS_FANTASY_NAME: z.string().min(1),
   BUSINESS_EMAIL: z.string().min(1).email(),
 

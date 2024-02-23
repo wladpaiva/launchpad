@@ -4,10 +4,10 @@ import {log} from '@repo/logger'
 import {NextRequest, NextResponse} from 'next/server'
 import type Stripe from 'stripe'
 
-import {stripeSessionCompleted} from './stripe-session-completed'
-import {stripeSessionExpired} from './stripe-session-expired'
-import {stripeSubscriptionCreated} from './stripe-subscription-created'
-import {stripeSubscriptionDeleted} from './stripe-subscription-deleted'
+import {onSessionCompleted} from './on-session-completed'
+import {onSessionExpired} from './on-session-expired'
+import {onSubscriptionCreated} from './on-subscription-created'
+import {onSubscriptionDeleted} from './on-subscription-deleted'
 
 export const POST = async (req: NextRequest) => {
   if (!stripe) {
@@ -50,16 +50,16 @@ export const POST = async (req: NextRequest) => {
     // Handle the event
     switch (event.type) {
       case 'checkout.session.completed':
-        await stripeSessionCompleted(event)
+        await onSessionCompleted(event)
         break
       case 'checkout.session.expired':
-        await stripeSessionExpired(event)
+        await onSessionExpired(event)
         break
       case 'customer.subscription.created':
-        await stripeSubscriptionCreated(event)
+        await onSubscriptionCreated(event)
         break
       case 'customer.subscription.deleted':
-        await stripeSubscriptionDeleted(event)
+        await onSubscriptionDeleted(event)
         break
       default:
         // Unexpected event type

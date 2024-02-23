@@ -5,9 +5,22 @@ const withMdx = nextMdx()
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withMdx({
+  // disable eslint during build since it is run on the CI
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  // disable typescript type checking during build since it is run on the CI
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   // Configure `pageExtensions` to include MDX files
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
-  transpilePackages: ['@repo/design-system', '@repo/email', '@repo/logger'],
+  transpilePackages: [
+    '@repo/db',
+    '@repo/design-system',
+    '@repo/email',
+    '@repo/logger',
+  ],
   experimental: {
     serverComponentsExternalPackages: [
       // needed this because of error during `build`

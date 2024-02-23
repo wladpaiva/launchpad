@@ -17,7 +17,9 @@
     "NEXT_PUBLIC_POSTHOG_HOST",
     "VERCEL_GIT_COMMIT_SHA",
     "NEXT_PUBLIC_SENTRY_DSN",
-    "LOGTAIL_SOURCE_TOKEN"
+    "LOGTAIL_SOURCE_TOKEN",
+    "TURSO_DATABASE_URL",
+    "TURSO_AUTH_TOKEN"
   ],
   "globalDependencies": ["**/.env.*local"],
   "pipeline": {

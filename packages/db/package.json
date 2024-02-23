@@ -1,0 +1,42 @@
+{
+  "name": "@repo/db",
+  "private": true,
+  "version": "0.0.0",
+  "sideEffects": false,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "require": "./src/index.js"
+    },
+    "./schema": {
+      "import": "./src/schema.ts",
+      "require": "./src/schema.js"
+    }
+  },
+  "scripts": {
+    "generate": "drizzle-kit generate:sqlite",
+    "studio": "drizzle-kit studio",
+    "deploy": "bun src/migrate.ts",
+    "seed": "bun src/seed.ts",
+    "push": "drizzle-kit push:sqlite",
+    "reset": "rm -f ${TURSO_DATABASE_URL#file:} && bun run deploy && bun run seed",
+    "lint": "eslint . --max-warnings 0",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "drizzle-kit": "^0.20.14",
+    "eslint": "8.56.0",
+    "typescript": "5.3.3"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.5.1",
+    "@paralleldrive/cuid2": "^2.2.2",
+    "@repo/logger": "*",
+    "drizzle-orm": "^0.29.4"
+  }
+}
