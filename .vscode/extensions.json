@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "antfu.unocss",
+    "qwtel.sqlite-viewer",
+    "github.vscode-github-actions"
+  ]
+}

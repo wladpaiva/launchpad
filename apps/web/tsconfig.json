@@ -1,0 +1,28 @@
+{
+  "extends": "@repo/typescript-config/nextjs.json",
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
+
+    // This is required for the next-auth@v5 beta to work. It can be removed once v5 is released.
+    "declaration": false,
+    "declarationMap": false
+  },
+  "include": [
+    "new-types.d.ts",
+    "next-env.d.ts",
+    "next.config.mjs",
+    "postcss.config.js",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": ["node_modules", ".next"]
+}

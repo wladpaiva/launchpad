@@ -1,0 +1,1 @@
+bunx nano-staged && bun run typecheck
