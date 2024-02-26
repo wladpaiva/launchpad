@@ -13,7 +13,7 @@ export default defineConfig({
   presets: [preset],
   theme: {
     fontFamily: {
-      sans: ['var(--font-sans)', ...theme.fontFamily.sans],
+      sans: ['var(--font-sans)', theme.fontFamily.sans],
     },
     breakpoints: {
       xs: '425px',
