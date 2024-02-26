@@ -7,6 +7,7 @@ import {Tailwind as TailwindBase} from 'jsx-email'
  */
 export const Tailwind = (props: React.PropsWithChildren) => (
   <TailwindBase
+    production
     config={{
       presets: [preset],
     }}

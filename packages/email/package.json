@@ -17,6 +17,6 @@
     "@repo/design-system": "*",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
-    "jsx-email": "^1.10.9"
+    "jsx-email": "^1.10.12"
   }
 }
