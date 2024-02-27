@@ -2,13 +2,15 @@ let fb: typeof import('react-facebook-pixel')
 let fbLoaded = false
 type analyticFn = {payload: any}
 
-export default function facebookPixelPlugin(userConfig = {}) {
+type UserConfig = {pixelId: string}
+
+export default function facebookPixelPlugin(userConfig: UserConfig) {
   return {
     name: 'facebook-ads',
     config: {
       ...userConfig,
     },
-    initialize: async ({config}: {config: any}) => {
+    initialize: async ({config}: {config: UserConfig}) => {
       const {pixelId} = config
       await import('react-facebook-pixel')
         .then(module => (fb = module.default))
