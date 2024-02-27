@@ -4,11 +4,12 @@ import {Tailwind} from '../components/tailwind'
 
 export type ConfirmInterestEmailProps = {
   link: string
+  business: string
 }
 
 export const TemplateName = 'Confirm interest'
 
-export const Template = ({link}: ConfirmInterestEmailProps) => {
+export const Template = ({link, business}: ConfirmInterestEmailProps) => {
   return (
     <Tailwind>
       <Html>
@@ -53,6 +54,7 @@ export const Template = ({link}: ConfirmInterestEmailProps) => {
           </Text>
           <Text className="text-base!">I'm glad to have you here.</Text>
           <Text className="text-base!">— Wlad Paiva</Text>
+          <Text className="text-base!">Team {business}</Text>
         </Body>
       </Html>
     </Tailwind>
@@ -61,4 +63,5 @@ export const Template = ({link}: ConfirmInterestEmailProps) => {
 
 Template.PreviewProps = {
   link: 'http://localhost:55420/',
+  business: 'Indie',
 } as ConfirmInterestEmailProps

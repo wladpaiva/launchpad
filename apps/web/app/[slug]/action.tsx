@@ -72,7 +72,9 @@ export async function expressInterest(prevState: any, formData: FormData) {
   const headersList = headers()
   const referer = headersList.get('referer') as string
   const link = `${referer}/confirm-email/${insertedInterest.id}`
-  const rendered = await render(<ConfirmEmailTemplate link={link} />)
+  const rendered = await render(
+    <ConfirmEmailTemplate link={link} business="Indie" />,
+  )
   const payload = {
     to: data.email,
     from: FROM_EMAIL,
