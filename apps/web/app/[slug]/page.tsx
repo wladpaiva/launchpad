@@ -72,7 +72,7 @@ export default async function Page({params}: {params: {slug: string}}) {
           </Highlight>
         </p>
       </div>
-      <BackgroundBeams className="hidden md:absolute" />
+      <BackgroundBeams className="hidden md:block" />
     </div>
   )
 }
