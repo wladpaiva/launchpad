@@ -76,6 +76,7 @@ export const waitlist = sqliteTable('waitlist', {
   slug: text('slug').notNull().unique(),
   title: text('title'),
   description: text('description'),
+  pixel: text('pixel'),
 })
 
 export const interest = sqliteTable(

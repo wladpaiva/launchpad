@@ -3,6 +3,7 @@ import googleAnalytics from '@analytics/google-analytics'
 import {originalSourcePlugin} from '@analytics/original-source-plugin'
 import Analytics, {AnalyticsPlugin} from 'analytics'
 
+import customFacebookPixelPlugin from './analytics-custom-facebook'
 import facebookPixelPlugin from './analytics-facebook'
 
 // What type of env are we in?
@@ -35,7 +36,10 @@ const devOnlyPlugins: AnalyticsPlugin[] = [
 ]
 
 // prod only plugins
-const prodOnlyPlugins: AnalyticsPlugin[] = []
+const prodOnlyPlugins: AnalyticsPlugin[] = [
+  // this pixel is custom by each page
+  customFacebookPixelPlugin(),
+]
 
 if (GA_MEASUREMENT_ID) {
   prodOnlyPlugins.push(

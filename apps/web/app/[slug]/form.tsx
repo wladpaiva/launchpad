@@ -1,6 +1,7 @@
 'use client'
 
 import {useEffect, useRef} from 'react'
+import analytics from '@/lib/analytics'
 import {SubmitButton} from '@repo/design-system/components/forms'
 import {Input} from '@repo/design-system/components/ui/input'
 import {Label} from '@repo/design-system/components/ui/label'
@@ -29,6 +30,7 @@ export function InterestForm({waitlist}: {waitlist: string}) {
           "You'll be notified when we're live. In the meantime, check out your inbox for a confirmation email.",
       })
       ref.current?.reset()
+      analytics.track('expressed-interest')
     }
   }, [state])
 
