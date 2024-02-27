@@ -45,7 +45,7 @@ export function InterestForm({waitlist}: {waitlist: string}) {
         Email
       </Label>
       <Input
-        type="text"
+        type="email" // Set the input type to "email" for email validation
         id="email"
         name="email"
         required
@@ -56,6 +56,10 @@ export function InterestForm({waitlist}: {waitlist: string}) {
             'border-red-500': state?.errors?.email?.length,
           },
         )}
+        autoComplete="email" // Enable email autocomplete
+        autoCapitalize="off" // Disable auto capitalization
+        autoCorrect="off" // Disable auto correction
+        spellCheck="false" // Disable spell check
       />
       {state?.errors?.email?.length ? (
         <p aria-live="polite" className="text-red-700 text-sm mt-2 ml-3">
