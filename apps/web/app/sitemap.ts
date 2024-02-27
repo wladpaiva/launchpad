@@ -1,6 +1,9 @@
 import {NEXT_PUBLIC_URL} from '@/lib/env.server'
+import type {MetadataRoute} from 'next'
 
-export default async function sitemap() {
+// export const revalidate = 3600 // 1 hour
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let routes = [
     '/',
     '/signin',
