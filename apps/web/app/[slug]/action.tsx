@@ -29,26 +29,29 @@ export async function expressInterest(prevState: any, formData: FormData) {
 
   const {data} = validatedFields
 
+  // Get the waitlist id based on the unique slug column
+  const waitlist = await db.query.waitlist.findFirst({
+    where: (waitlist, {eq}) => eq(waitlist.slug, data.waitlist),
+  })
+
+  if (!waitlist) {
+    return {
+      errors: {
+        email: ['Invalid waitlist.'],
+      },
+    }
+  }
+
+  // Check if the user has already expressed interest
   const existingInterest = await db.query.interest.findFirst({
-    where: (interest, {eq}) => eq(interest.email, data.email),
+    where: (interest, {eq, and}) =>
+      and(eq(interest.email, data.email), eq(interest.waitlist, waitlist.id)),
   })
 
   if (existingInterest) {
     return {
       errors: {
         email: ['You have already expressed interest.'],
-      },
-    }
-  }
-
-  // Get the waitlist id based on the unique slug column
-  const waitlist = await db.query.waitlist.findFirst({
-    where: (waitlist, {eq}) => eq(waitlist.slug, data.waitlist),
-  })
-  if (!waitlist) {
-    return {
-      errors: {
-        email: ['Invalid waitlist.'],
       },
     }
   }
