@@ -44,14 +44,9 @@ export const {
   STRIPE_WEBHOOK_SECRET: z.string().optional(),
 
   /**
-   * The public URL of the app. \
-   * Default to `process.env.VERCEL_URL || 'http://localhost:3000'`
+   * The public URL of the app.
    */
-  NEXT_PUBLIC_URL: z
-    .string()
-    .min(1)
-    .url()
-    .default(process.env.VERCEL_URL || 'http://localhost:3000'),
+  NEXT_PUBLIC_URL: z.string().min(1).url(),
 })
 
 /**

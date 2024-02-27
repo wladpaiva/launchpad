@@ -5,7 +5,7 @@ import {FROM_EMAIL, isDevelopment} from '@/lib/env.server'
 import {db} from '@repo/db'
 import {interest} from '@repo/db/schema'
 import {render} from '@repo/email'
-import {Template as ConfirmEmailTemplate} from '@repo/email/jsx/confirm-email'
+import {Template as ConfirmEmailTemplate} from '@repo/email/templates/confirm-email'
 import {headers} from 'next/headers'
 import {z} from 'zod'
 

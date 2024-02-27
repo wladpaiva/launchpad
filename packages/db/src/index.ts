@@ -1,5 +1,4 @@
 import {createClient} from '@libsql/client'
-import {log} from '@repo/logger'
 import {eq} from 'drizzle-orm'
 import {drizzle} from 'drizzle-orm/libsql'
 import type {SQLiteUpdateSetSource} from 'drizzle-orm/sqlite-core'
@@ -13,7 +12,6 @@ export const connection = createClient({
   authToken: `${process.env.TURSO_AUTH_TOKEN}`,
 })
 
-log.info('Connecting to database')
 export const db = drizzle(connection, {
   schema,
 })

@@ -4,12 +4,12 @@
   "private": true,
   "main": "index.ts",
   "files": [
-    "jsx",
+    "templates",
     "index.ts"
   ],
   "scripts": {
-    "dev": "email preview ./jsx --no-open",
-    "export": "email build ./jsx",
+    "dev": "email preview ./templates --no-open",
+    "export": "email build ./templates",
     "lint": "eslint . --max-warnings 0",
     "typecheck": "tsc --noEmit"
   },
@@ -17,6 +17,6 @@
     "@repo/design-system": "*",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
-    "jsx-email": "^1.10.9"
+    "jsx-email": "^1.10.12"
   }
 }
