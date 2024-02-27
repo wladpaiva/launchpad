@@ -30,7 +30,7 @@ export function InterestForm({waitlist}: {waitlist: string}) {
           "You'll be notified when we're live. In the meantime, check out your inbox for a confirmation email.",
       })
       ref.current?.reset()
-      analytics.track('expressed-interest')
+      analytics.track('CompleteRegistration')
     }
   }, [state])
 
