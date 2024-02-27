@@ -1,6 +1,12 @@
 import type {AdapterAccount} from '@auth/core/adapters'
 import {createId} from '@paralleldrive/cuid2'
-import {integer, primaryKey, sqliteTable, text} from 'drizzle-orm/sqlite-core'
+import {
+  integer,
+  primaryKey,
+  sqliteTable,
+  text,
+  unique,
+} from 'drizzle-orm/sqlite-core'
 
 export const users = sqliteTable('user', {
   id: text('id')
@@ -59,5 +65,36 @@ export const verificationTokens = sqliteTable(
   },
   vt => ({
     compoundKey: primaryKey({columns: [vt.identifier, vt.token]}),
+  }),
+)
+
+export const waitlist = sqliteTable('waitlist', {
+  id: text('id')
+    .notNull()
+    .primaryKey()
+    .$defaultFn(() => createId()),
+  slug: text('slug').notNull().unique(),
+  title: text('title'),
+  description: text('description'),
+})
+
+export const interest = sqliteTable(
+  'interest',
+  {
+    id: text('id')
+      .notNull()
+      .primaryKey()
+      .$defaultFn(() => createId()),
+    waitlist: text('waitlist')
+      .references(() => waitlist.id, {onDelete: 'cascade'})
+      .notNull(),
+    email: text('email').notNull(),
+    emailVerified: integer('emailVerified', {mode: 'timestamp_ms'}),
+    createdAt: integer('createdAt', {mode: 'timestamp_ms'})
+      .$defaultFn(() => new Date())
+      .notNull(),
+  },
+  t => ({
+    unq: unique().on(t.waitlist, t.email),
   }),
 )

@@ -30,6 +30,7 @@
     "@vercel/speed-insights": "^1.0.10",
     "analytics": "^0.8.11",
     "bowlingx-znv": "^0.4.7",
+    "framer-motion": "^11.0.6",
     "next": "^14.1.0",
     "next-auth": "5.0.0-beta.13",
     "next-themes": "^0.2.1",

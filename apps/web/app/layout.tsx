@@ -4,10 +4,14 @@ import {
   GOOGLE_SITE_VERIFICATION,
   NEXT_PUBLIC_URL,
 } from '@/lib/env.server'
+import {Toaster} from '@repo/design-system/components/ui/toaster'
 import {cn} from '@repo/design-system/lib/utils'
 import {SpeedInsights} from '@vercel/speed-insights/next'
 import type {Metadata, Viewport} from 'next'
-import {Inter as FontSans} from 'next/font/google'
+import {
+  Inter as FontSans,
+  Instrument_Serif as FontSerif,
+} from 'next/font/google'
 
 import {Analytics} from './components/analytics'
 import {Providers} from './components/providers'
@@ -18,6 +22,13 @@ import '@repo/design-system/reset.css'
 export const fontSans = FontSans({
   subsets: ['latin'],
   variable: '--font-sans',
+})
+
+export const fontSerif = FontSerif({
+  style: 'italic',
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-serif',
 })
 
 export const metadata: Metadata = {
@@ -75,8 +86,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className="scrollbar-stable">
       <body
         className={cn(
-          'min-h-screen bg-background font-sans antialiased',
+          'min-h-dvh bg-background font-sans antialiased',
           fontSans.variable,
+          fontSerif.variable,
         )}
       >
         <Providers>
@@ -87,6 +99,7 @@ export default function RootLayout({
           <Analytics />
         </Suspense>
         <SpeedInsights />
+        <Toaster />
       </body>
     </html>
   )

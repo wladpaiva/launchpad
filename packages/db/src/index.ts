@@ -6,6 +6,8 @@ import type {SQLiteUpdateSetSource} from 'drizzle-orm/sqlite-core'
 
 import * as schema from './schema'
 
+export * from 'drizzle-orm'
+
 export const connection = createClient({
   url: `${process.env.TURSO_DATABASE_URL}`,
   authToken: `${process.env.TURSO_AUTH_TOKEN}`,
