@@ -1,4 +1,4 @@
-let fb: typeof import('react-facebook-pixel')
+let fb: any
 let fbLoaded = false
 type analyticFn = {payload: any}
 
