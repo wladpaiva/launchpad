@@ -12,6 +12,10 @@ let customPixel: string | undefined
  */
 export function setCustomPixelId(id: string) {
   customPixel = id
+  fb?.init(customPixel, undefined, {
+    autoConfig: true,
+    debug: true,
+  })
 }
 
 export default function facebookPixelPlugin(userConfig: UserConfig) {
