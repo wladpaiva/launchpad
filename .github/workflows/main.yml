@@ -41,6 +41,9 @@ jobs:
       - name: ʦ Typecheck
         run: bun typecheck
 
+      - name: 🫙 Create sample database
+        run: bun run --cwd packages/db deploy
+
       - name: 🏃‍♂️ Build
         run: bun run build
         env:
@@ -73,6 +76,9 @@ jobs:
 
       - name: 📟 Install Playwright Browsers
         run: bun test:e2e:install
+
+      - name: 🫙 Create sample database
+        run: bun run --cwd packages/db deploy
 
       - name: 🧪 Run Playwright tests
         run: bun test:e2e
