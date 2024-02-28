@@ -46,11 +46,13 @@ if (GA_MEASUREMENT_ID) {
 }
 
 if (FACEBOOK_PIXEL) {
-  prodOnlyPlugins.push(
-    facebookPixelPlugin({
-      pixelId: FACEBOOK_PIXEL,
-    }),
-  )
+  if (typeof window !== 'undefined') {
+    prodOnlyPlugins.push(
+      facebookPixelPlugin({
+        pixelId: FACEBOOK_PIXEL,
+      }),
+    )
+  }
 }
 
 if (POSTHOG_KEY) {
