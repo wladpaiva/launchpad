@@ -42,17 +42,9 @@ export default function facebookPixelPlugin(userConfig: UserConfig) {
     },
     page: () => {
       fb.pageView()
-
-      if (customPixel) {
-        fb.trackSingle(customPixel, 'PageView')
-      }
     },
     track: ({payload}: analyticFn) => {
       fb.track(payload.event, payload.properties)
-
-      if (customPixel) {
-        fb.trackSingle(customPixel, payload.event.payload.properties)
-      }
     },
     loaded: () => {
       return fbLoaded
