@@ -4,6 +4,16 @@ type analyticFn = {payload: any}
 
 type UserConfig = {pixelId: string}
 
+let customPixel: string | undefined
+
+/**
+ * Set the custom pixel id to be used
+ * @param id
+ */
+export function setCustomPixelId(id: string) {
+  customPixel = id
+}
+
 export default function facebookPixelPlugin(userConfig: UserConfig) {
   return {
     name: 'facebook-ads',
@@ -26,9 +36,17 @@ export default function facebookPixelPlugin(userConfig: UserConfig) {
     },
     page: () => {
       fb.pageView()
+
+      if (customPixel) {
+        fb.trackSingle(customPixel, 'PageView')
+      }
     },
     track: ({payload}: analyticFn) => {
       fb.track(payload.event, payload.properties)
+
+      if (customPixel) {
+        fb.trackSingle(customPixel, payload.event.payload.properties)
+      }
     },
     loaded: () => {
       return fbLoaded
