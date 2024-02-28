@@ -22,17 +22,19 @@ export default function facebookPixelPlugin(userConfig: UserConfig) {
     },
     initialize: async ({config}: {config: UserConfig}) => {
       const {pixelId} = config
-      await import('react-facebook-pixel')
-        .then(module => (fb = module.default))
-        .then(() => {
-          if (!fbLoaded) {
-            fb.init(pixelId, undefined, {
-              autoConfig: true,
-              debug: true,
-            })
-            fbLoaded = true
-          }
-        })
+      if (typeof window !== 'undefined') {
+        await import('react-facebook-pixel')
+          .then(module => (fb = module.default))
+          .then(() => {
+            if (!fbLoaded) {
+              fb.init(pixelId, undefined, {
+                autoConfig: true,
+                debug: true,
+              })
+              fbLoaded = true
+            }
+          })
+      }
     },
     page: () => {
       fb.pageView()
