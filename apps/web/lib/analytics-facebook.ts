@@ -21,7 +21,7 @@ export default function facebookPixelPlugin(userConfig: UserConfig) {
           if (!fbLoaded) {
             fb.init(pixelId, undefined, {
               autoConfig: true,
-              debug: true,
+              debug: false,
             })
             fbLoaded = true
           }
