@@ -1,4 +1,4 @@
-let fb: typeof import('react-facebook-pixel')
+let fb: any
 let fbLoaded = false
 type analyticFn = {payload: any}
 
@@ -12,6 +12,9 @@ export default function facebookPixelPlugin(userConfig: UserConfig) {
     },
     initialize: async ({config}: {config: UserConfig}) => {
       const {pixelId} = config
+
+      if (typeof window === 'undefined') return
+
       await import('react-facebook-pixel')
         .then(module => (fb = module.default))
         .then(() => {
