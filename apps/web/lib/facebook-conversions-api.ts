@@ -320,9 +320,9 @@ export class FacebookConversionsClient {
             ...event,
             user_data: {
               ...event.user_data,
-              fn: event.user_data.fn?.map(name => this.calculateSHA256(name)),
-              em: event.user_data.em?.map(email => this.calculateSHA256(email)),
-              ph: event.user_data.ph?.map(phone => this.calculateSHA256(phone)),
+              fn: this.parseData(event.user_data.fn),
+              em: this.parseData(event.user_data.em),
+              ph: this.parseData(event.user_data.ph),
             },
           })),
         }),
@@ -334,5 +334,11 @@ export class FacebookConversionsClient {
       .catch((e: Error) => {
         throw e
       })
+  }
+
+  private parseData(data?: string[]) {
+    return data
+      ? Promise.all(data.map(name => this.calculateSHA256(name)))
+      : undefined
   }
 }
