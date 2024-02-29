@@ -314,7 +314,18 @@ export class FacebookConversionsClient {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(body),
+        body: JSON.stringify({
+          ...body,
+          data: body.data.map(event => ({
+            ...event,
+            user_data: {
+              ...event.user_data,
+              fn: event.user_data.fn?.map(name => this.calculateSHA256(name)),
+              em: event.user_data.em?.map(email => this.calculateSHA256(email)),
+              ph: event.user_data.ph?.map(phone => this.calculateSHA256(phone)),
+            },
+          })),
+        }),
       },
     )
 
