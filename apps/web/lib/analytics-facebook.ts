@@ -26,11 +26,13 @@ let fbLoaded = false
  * @param id
  */
 export function setCustomPixelId(id: string) {
+  console.log('🔥 ~ setting custom pixel')
   fbBrowser?.init(id, undefined, {
     autoConfig: true,
     debug: true,
   })
   // in production, this is being ran after the page view, so we need to manually track the page view
+  console.log('🔥 ~ tracking custom pixel')
   fbBrowser?.trackSingle(id, 'PageView')
 }
 
