@@ -2,7 +2,7 @@ import type {
   pageView as serverPageView,
   track as serverTrack,
 } from '@/lib/nextjs-facebook-conversions-api'
-import type {init, pageView, track} from 'react-facebook-pixel'
+import type {init, pageView, track, trackSingle} from 'react-facebook-pixel'
 
 type TrackProps = {payload: any}
 type UserConfig = {pixelId: string}
@@ -10,6 +10,7 @@ type FacebookBrowser = {
   track: typeof track
   pageView: typeof pageView
   init: typeof init
+  trackSingle: typeof trackSingle
 }
 type FacebookServer = {
   track: typeof serverTrack
@@ -19,18 +20,18 @@ type FacebookServer = {
 let fbBrowser: FacebookBrowser | undefined
 let fbServer: FacebookServer | undefined
 let fbLoaded = false
-let customPixel: string | undefined
 
 /**
  * Set the custom pixel id to be used
  * @param id
  */
 export function setCustomPixelId(id: string) {
-  customPixel = id
-  fbBrowser?.init(customPixel, undefined, {
+  fbBrowser?.init(id, undefined, {
     autoConfig: true,
     debug: true,
   })
+  // in production, this is being ran after the page view, so we need to manually track the page view
+  fbBrowser?.trackSingle(id, 'PageView')
 }
 
 export default function facebookPixelPlugin(userConfig: UserConfig) {
