@@ -26,7 +26,7 @@ let fbLoaded = false
  * @param id
  */
 export function setCustomPixelId(id: string) {
-  console.log('🔥 ~ setting custom pixel')
+  console.log('🔥 ~ setting custom pixel', id)
   fbBrowser?.init(id, undefined, {
     autoConfig: true,
     debug: true,
