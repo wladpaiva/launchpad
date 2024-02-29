@@ -38,14 +38,14 @@ export const metadata: Metadata = {
     template: `%s | ${BUSINESS_FANTASY_NAME}`,
   },
   description:
-    'A boilerplate to help people ship code faster and start making money online super quickly.',
+    'A waitlist app to help people launch their products faster and start building a community online.',
   alternates: {
     canonical: NEXT_PUBLIC_URL,
   },
   openGraph: {
     title: BUSINESS_FANTASY_NAME,
     description:
-      'A boilerplate to help people ship code faster and start making money online super quickly.',
+      'A waitlist app to help people launch their products faster and start building a community online.',
     url: NEXT_PUBLIC_URL,
     siteName: BUSINESS_FANTASY_NAME,
     locale: 'en_US',

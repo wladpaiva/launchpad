@@ -23,6 +23,7 @@
 
 import React from 'react'
 import {Highlight} from '@/components/highlight'
+import {NEXT_PUBLIC_URL} from '@/lib/env.server'
 import {db} from '@repo/db'
 import {Mark} from '@repo/design-system/components/icons'
 import type {Metadata} from 'next'
@@ -31,16 +32,35 @@ import {notFound} from 'next/navigation'
 import {BackgroundBeams} from './background-beams'
 import {InterestForm} from './form'
 
-export const metadata: Metadata = {
-  title: `Express interest`,
+type PageProps = {params: {slug: string}}
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata | undefined> {
+  const waitlist = await getWaitlist(params.slug)
+  if (!waitlist) {
+    return
+  }
+
+  return {
+    title: 'Express your interest',
+    openGraph: {
+      title: waitlist.slug || undefined,
+      description: waitlist.description || undefined,
+      type: 'website',
+      url: `${NEXT_PUBLIC_URL}/${waitlist.slug}`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: waitlist.slug || undefined,
+      description: waitlist.description || undefined,
+    },
+  }
 }
+export default async function Page({params}: PageProps) {
+  const waitlist = await getWaitlist(params.slug)
 
-export default async function Page({params}: {params: {slug: string}}) {
-  const page = await db.query.waitlist.findFirst({
-    where: (waitlist, {eq}) => eq(waitlist.slug, params.slug),
-  })
-
-  if (!page) {
+  if (!waitlist) {
     return notFound()
   }
 
@@ -56,11 +76,11 @@ export default async function Page({params}: {params: {slug: string}}) {
 
         <h1
           className="relative z-10 text-3xl xs:text-4xl md:text-6xl text-center mb-4"
-          dangerouslySetInnerHTML={{__html: page.title || ''}}
+          dangerouslySetInnerHTML={{__html: waitlist.title || ''}}
         />
         <p
           className="text-muted-foreground max-w-lg mx-auto my-2 text-sm text-center relative z-10 mb-8"
-          dangerouslySetInnerHTML={{__html: page.description || ''}}
+          dangerouslySetInnerHTML={{__html: waitlist.description || ''}}
         />
 
         <InterestForm waitlist={params.slug} />
@@ -75,4 +95,9 @@ export default async function Page({params}: {params: {slug: string}}) {
       <BackgroundBeams className="hidden md:block" />
     </div>
   )
+}
+async function getWaitlist(slug: string) {
+  return await db.query.waitlist.findFirst({
+    where: (waitlist, {eq}) => eq(waitlist.slug, slug),
+  })
 }
