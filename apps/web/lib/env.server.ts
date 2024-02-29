@@ -26,6 +26,8 @@ export const {
   STRIPE_WEBHOOK_SECRET,
 
   NEXT_PUBLIC_URL,
+
+  FACEBOOK_CONVERSIONS_API_TOKEN,
 } = parseEnv(process.env, {
   TURSO_DATABASE_URL: z.string().min(1).url(),
   BUSINESS_FANTASY_NAME: z.string().min(1),
@@ -47,6 +49,8 @@ export const {
    * The public URL of the app.
    */
   NEXT_PUBLIC_URL: z.string().min(1).url(),
+
+  FACEBOOK_CONVERSIONS_API_TOKEN: z.string().optional(),
 })
 
 /**

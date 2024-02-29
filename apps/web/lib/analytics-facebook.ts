@@ -1,9 +1,24 @@
-let fb: any
-let fbLoaded = false
-type analyticFn = {payload: any}
+import type {
+  pageView as serverPageView,
+  track as serverTrack,
+} from '@/lib/nextjs-facebook-conversions-api'
+import type {init, pageView, track} from 'react-facebook-pixel'
 
+type TrackProps = {payload: any}
 type UserConfig = {pixelId: string}
+type FacebookBrowser = {
+  track: typeof track
+  pageView: typeof pageView
+  init: typeof init
+}
+type FacebookServer = {
+  track: typeof serverTrack
+  pageView: typeof serverPageView
+}
 
+let fbBrowser: FacebookBrowser | undefined
+let fbServer: FacebookServer | undefined
+let fbLoaded = false
 let customPixel: string | undefined
 
 /**
@@ -12,7 +27,7 @@ let customPixel: string | undefined
  */
 export function setCustomPixelId(id: string) {
   customPixel = id
-  fb?.init(customPixel, undefined, {
+  fbBrowser?.init(customPixel, undefined, {
     autoConfig: true,
     debug: true,
   })
@@ -26,25 +41,43 @@ export default function facebookPixelPlugin(userConfig: UserConfig) {
     },
     initialize: async ({config}: {config: UserConfig}) => {
       const {pixelId} = config
-      if (typeof window !== 'undefined') {
-        await import('react-facebook-pixel')
-          .then(module => (fb = module.default))
-          .then(() => {
-            if (!fbLoaded) {
-              fb.init(pixelId, undefined, {
-                autoConfig: true,
-                debug: true,
-              })
-              fbLoaded = true
-            }
-          })
+
+      if (typeof window === 'undefined') {
+        // TODO: https://discord.com/channels/752553802359505017/1212491162343055440/1212491162343055440
+        // await import('@/lib/nextjs-facebook-conversions-api')
+        //   .then(module => {
+        //     fbServer = {
+        //       track: module.track,
+        //       pageView: module.pageView,
+        //     }
+        //   })
+        //   .then(() => {
+        //     fbLoaded = true
+        //   })
+
+        return
       }
+
+      // load facebook pixel on the client side
+      await import('react-facebook-pixel')
+        .then(module => (fbBrowser = module.default))
+        .then(() => {
+          if (!fbLoaded) {
+            fbBrowser?.init(pixelId, undefined, {
+              autoConfig: true,
+              debug: false,
+            })
+            fbLoaded = true
+          }
+        })
     },
     page: () => {
-      fb.pageView()
+      fbBrowser?.pageView()
+      fbServer?.pageView()
     },
-    track: ({payload}: analyticFn) => {
-      fb.track(payload.event, payload.properties)
+    track: ({payload}: TrackProps) => {
+      fbBrowser?.track(payload.event, payload.properties)
+      fbServer?.track(payload.event, payload.properties)
     },
     loaded: () => {
       return fbLoaded
