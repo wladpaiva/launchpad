@@ -6,6 +6,7 @@ import {db} from '@repo/db'
 import {interest} from '@repo/db/schema'
 import {render} from '@repo/email'
 import {Template as ConfirmEmailTemplate} from '@repo/email/templates/confirm-email'
+import {log} from '@repo/logger'
 import {headers} from 'next/headers'
 import {z} from 'zod'
 
@@ -68,6 +69,11 @@ export async function expressInterest(prevState: any, formData: FormData) {
     })
     .get()
 
+  log.debug('Registired interest', {
+    waitlist: waitlist.slug,
+    interest: insertedInterest.id,
+  })
+
   // Send the confirmation email
   const headersList = headers()
   const referer = headersList.get('referer') as string
@@ -85,7 +91,8 @@ export async function expressInterest(prevState: any, formData: FormData) {
   if (isDevelopment || !resend) {
     console.log(` - Confirmation link:   ${link}`)
   }
-  resend?.emails.send(payload)
+  const response = await resend?.emails.send(payload)
+  log.debug('response from Resend', {waitlist: waitlist.slug, response})
 
   return {
     success: true,
