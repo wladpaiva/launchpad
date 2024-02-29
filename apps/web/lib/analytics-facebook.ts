@@ -20,20 +20,21 @@ type FacebookServer = {
 let fbBrowser: FacebookBrowser | undefined
 let fbServer: FacebookServer | undefined
 let fbLoaded = false
+let fbCustomPixelId: string | undefined
 
 /**
  * Set the custom pixel id to be used
  * @param id
  */
 export function setCustomPixelId(id: string) {
-  console.log('🔥 ~ setting custom pixel', id)
-  fbBrowser?.init(id, undefined, {
-    autoConfig: true,
-    debug: true,
-  })
-  // in production, this is being ran after the page view, so we need to manually track the page view
-  console.log('🔥 ~ tracking custom pixel')
-  fbBrowser?.trackSingle(id, 'PageView')
+  fbCustomPixelId = id
+  if (fbBrowser) {
+    fbBrowser.init(id, undefined, {
+      autoConfig: true,
+      debug: true,
+    })
+    fbBrowser.trackSingle(id, 'PageView')
+  }
 }
 
 export default function facebookPixelPlugin(userConfig: UserConfig) {
@@ -70,6 +71,14 @@ export default function facebookPixelPlugin(userConfig: UserConfig) {
               autoConfig: true,
               debug: false,
             })
+
+            if (fbCustomPixelId) {
+              fbBrowser?.init(fbCustomPixelId, undefined, {
+                autoConfig: true,
+                debug: false,
+              })
+            }
+
             fbLoaded = true
           }
         })
